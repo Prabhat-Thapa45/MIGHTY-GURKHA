@@ -93,7 +93,7 @@ export default function Navbar() {
             <span>+977 9851054333</span>
           </Link>
           ,
-          <Link href="tel:+977 9851054333">``
+          <Link href="tel:+977 9851054333">
             <span>+977 9851054333</span>
           </Link>
         </div>
