@@ -1,6 +1,5 @@
 import React from "react";
-import { Bed, Utensils, Wifi, WashingMachine, LibraryBig } from "lucide-react"; // Using lucide-react for icons
-import { PiSecurityCamera } from "react-icons/pi";
+import { Bed, Utensils, Wifi} from "lucide-react"; // Using lucide-react for icons
 import Image from "next/image";
 
 function Hostel() {

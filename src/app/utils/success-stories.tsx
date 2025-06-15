@@ -3,13 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { DM_Sans } from "next/font/google";
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "700", "900"],
-  variable: "--font-dm-sans",
-});
+
 
 
 type Story = {
