@@ -1,0 +1,8 @@
+.hide_contact {
+    display: flex;
+}
+@media (max-width: 600px){
+    .hide_contact{
+        display: none;
+    }
+}

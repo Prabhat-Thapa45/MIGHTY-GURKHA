@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Economics of LBOs: An Interactive Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F7F4;
+            color: #3D3D3D;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #4A6FA5;
+        }
+        .active-tab {
+            background-color: #4A6FA5 !important;
+            color: #FFFFFF !important;
+        }
+        .kpi-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .diagram-step {
+            transition: all 0.3s ease;
+        }
+        .diagram-step:hover .diagram-step-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .diagram-step-content {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="sticky top-0 z-50 shadow-sm bg-white/80 backdrop-blur-md">
+        <nav class="container flex items-center justify-between px-6 py-4 mx-auto">
+            <h1 class="text-xl font-bold text-[#4A6FA5]">The Economics of LBOs</h1>
+            <div class="hidden space-x-8 md:flex">
+                <a href="#definition" class="font-medium nav-link">What is an LBO?</a>
+                <a href="#pros-cons" class="font-medium nav-link">Pros & Cons</a>
+                <a href="#evolution" class="font-medium nav-link">Market Evolution</a>
+                <a href="#analysis" class="font-medium nav-link">Loan Analysis</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container px-6 py-8 mx-auto md:py-12">
+        
+        <section id="introduction" class="mb-16 text-center md:mb-24">
+            <h2 class="mb-4 text-3xl font-bold md:text-4xl">An Interactive Exploration of Leveraged Buyouts</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-600">This application translates the 2022 paper, "The Economics of LBOs: Evidence from the Syndicated Loan Market," into an interactive experience. Explore the mechanics, motivations, and market dynamics of LBOs, and dive into the data that reveals how these complex deals are financed across the globe.</p>
+        </section>
+
+        <section id="definition" class="mb-16 md:mb-24 scroll-mt-20">
+            <h2 class="mb-4 text-3xl font-bold text-center">What is a Leveraged Buyout?</h2>
+            <p class="max-w-4xl mx-auto mb-12 text-lg text-center text-gray-600">An LBO is the acquisition of a company by a group of investors using a high percentage of debt for financing. The buyers borrow against the target's own assets and future cash flows to fund the purchase. This section breaks down the typical transaction process and the key participants involved.</p>
+            
+            <div class="p-8 bg-white shadow-lg rounded-xl">
+                <h3 class="mb-8 text-2xl font-bold text-center">The LBO Transaction Flow</h3>
+                <div class="grid items-center grid-cols-1 gap-4 text-center md:grid-cols-5">
+                    
+                    <div class="diagram-step">
+                        <div class="flex justify-center items-center h-24 w-24 rounded-full bg-[#E0E7FF] mx-auto mb-2 border-4 border-white shadow-md">
+                           <span class="text-3xl font-bold text-[#4A6FA5]">1</span>
+                        </div>
+                        <h4 class="font-bold">Create SPV</h4>
+                        <p class="absolute hidden w-56 p-2 mb-2 text-sm text-white text-gray-500 bg-gray-800 rounded-md diagram-step-content bottom-full md:block">Investors form a new company (Special Purpose Vehicle or "NewCo") to make the acquisition.</p>
+                    </div>
+
+                    <div class="hidden text-2xl text-gray-300 md:block">&rarr;</div>
+                    
+                    <div class="diagram-step">
+                        <div class="flex justify-center items-center h-24 w-24 rounded-full bg-[#E0E7FF] mx-auto mb-2 border-4 border-white shadow-md">
+                           <span class="text-3xl font-bold text-[#4A6FA5]">2</span>
+                        </div>
+                        <h4 class="font-bold">Raise Capital</h4>
+                         <p class="absolute hidden w-56 p-2 mb-2 text-sm text-white text-gray-500 bg-gray-800 rounded-md diagram-step-content bottom-full md:block">The SPV is capitalized with a small amount of equity from sponsors and a large amount of debt from lenders.</p>
+                    </div>
+
+                    <div class="hidden text-2xl text-gray-300 md:block">&rarr;</div>
+                    
+                    <div class="diagram-step">
+                        <div class="flex justify-center items-center h-24 w-24 rounded-full bg-[#E0E7FF] mx-auto mb-2 border-4 border-white shadow-md">
+                           <span class="text-3xl font-bold text-[#4A6FA5]">3</span>
+                        </div>
+                        <h4 class="font-bold">Acquire Target</h4>
+                         <p class="absolute hidden w-56 p-2 mb-2 text-sm text-white text-gray-500 bg-gray-800 rounded-md diagram-step-content bottom-full md:block">The SPV uses the raised capital to purchase the target company's shares.</p>
+                    </div>
+                </div>
+                <div class="flex justify-center my-4 text-2xl text-gray-300 md:hidden">&darr;</div>
+                <div class="grid items-center grid-cols-1 gap-4 mt-4 text-center md:grid-cols-3 md:grid-cols-5">
+                    <div class="diagram-step md:col-start-3">
+                         <div class="flex justify-center items-center h-24 w-24 rounded-full bg-[#D48C70]/30 mx-auto mb-2 border-4 border-white shadow-md">
+                           <span class="text-3xl font-bold text-[#D48C70]">4</span>
+                        </div>
+                        <h4 class="font-bold">Merge</h4>
+                        <p class="absolute hidden w-56 p-2 mb-2 text-sm text-white text-gray-500 bg-gray-800 rounded-md diagram-step-content bottom-full md:block">The SPV merges with the target company, transferring the acquisition debt onto the target's balance sheet.</p>
+                    </div>
+                    <div class="hidden text-2xl text-gray-300 md:block">&rarr;</div>
+                     <div class="diagram-step">
+                         <div class="flex justify-center items-center h-24 w-24 rounded-full bg-[#D48C70]/30 mx-auto mb-2 border-4 border-white shadow-md">
+                           <span class="text-3xl font-bold text-[#D48C70]">5</span>
+                        </div>
+                        <h4 class="font-bold">Operate & Exit</h4>
+                        <p class="absolute hidden w-56 p-2 mb-2 text-sm text-white text-gray-500 bg-gray-800 rounded-md diagram-step-content bottom-full md:block">Sponsors improve operations to increase value, then exit via IPO, sale, or another LBO.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="pros-cons" class="mb-16 md:mb-24 scroll-mt-20">
+            <h2 class="mb-4 text-3xl font-bold text-center">The Double-Edged Sword</h2>
+            <p class="max-w-4xl mx-auto mb-12 text-lg text-center text-gray-600">LBOs offer significant potential upsides, but these are balanced by considerable risks and criticisms. This section provides a side-by-side view of the primary economic motivations and the associated drawbacks.</p>
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+                <div class="p-8 bg-white border-t-4 border-green-500 shadow-lg rounded-xl">
+                    <h3 class="mb-6 text-2xl font-bold text-green-600">Motivations (The Pros)</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><span class="mt-1 mr-3 text-green-500">&#10003;</span><span><strong class="block">Reduced Agency Costs:</strong> Aligning manager and owner interests through high equity stakes and debt pressure improves focus and performance.</span></li>
+                        <li class="flex items-start"><span class="mt-1 mr-3 text-green-500">&#10003;</span><span><strong class="block">Operating Improvements:</strong> Private equity sponsors often bring industry expertise and operational discipline, leading to efficiency gains.</span></li>
+                        <li class="flex items-start"><span class="mt-1 mr-3 text-green-500">&#10003;</span><span><strong class="block">Interest Tax Shields:</strong> High levels of debt generate significant tax deductions, increasing post-tax cash flows.</span></li>
+                        <li class="flex items-start"><span class="mt-1 mr-3 text-green-500">&#10003;</span><span><strong class="block">Corporate Undervaluation:</strong> An opportunity to acquire assets for less than their intrinsic value and unlock potential.</span></li>
+                    </ul>
+                </div>
+                <div class="p-8 bg-white border-t-4 border-red-500 shadow-lg rounded-xl">
+                    <h3 class="mb-6 text-2xl font-bold text-red-600">Drawbacks (The Cons)</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start"><span class="mt-1 mr-3 text-red-500">&#10007;</span><span><strong class="block">Increased Financial Distress:</strong> High leverage magnifies risk, making the company vulnerable to economic downturns or poor performance.</span></li>
+                        <li class="flex items-start"><span class="mt-1 mr-3 text-red-500">&#10007;</span><span><strong class="block">Stakeholder Expropriation:</strong> Gains may come at the expense of other stakeholders, such as employees (through job cuts) or existing bondholders.</span></li>
+                        <li class="flex items-start"><span class="mt-1 mr-3 text-red-500">&#10007;</span><span><strong class="block">Information Asymmetry:</strong> Insider managers may use private knowledge to their advantage, potentially at the expense of public shareholders.</span></li>
+                        <li class="flex items-start"><span class="mt-1 mr-3 text-red-500">&#10007;</span><span><strong class="block">High Complexity & Fees:</strong> LBO transactions are complex and involve substantial fees paid to bankers, lawyers, and advisors.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="evolution" class="mb-16 md:mb-24 scroll-mt-20">
+            <h2 class="mb-4 text-3xl font-bold text-center">Evolution of the LBO Market</h2>
+            <p class="max-w-4xl mx-auto mb-12 text-lg text-center text-gray-600">The LBO market has experienced distinct waves of activity, heavily influenced by economic conditions and credit availability. The chart below shows the total value of syndicated loans extended to LBOs from 2000 to 2020. Use the toggles to compare the global market with the U.S. and European markets.</p>
+            <div class="p-4 bg-white shadow-lg md:p-8 rounded-xl">
+                <div class="flex justify-center mb-6">
+                    <div id="market-evolution-toggles" class="flex p-1 space-x-1 bg-gray-200 rounded-full">
+                        <button data-region="all" class="px-4 py-2 text-sm font-medium rounded-full active-tab">Global</button>
+                        <button data-region="us" class="px-4 py-2 text-sm font-medium rounded-full">U.S.</button>
+                        <button data-region="europe" class="px-4 py-2 text-sm font-medium rounded-full">Europe</button>
+                    </div>
+                </div>
+                <div class="max-w-5xl mx-auto chart-container">
+                    <canvas id="marketEvolutionChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="scroll-mt-20">
+            <h2 class="mb-4 text-3xl font-bold text-center">Deep Dive: Loan Analysis Dashboard</h2>
+             <p class="max-w-4xl mx-auto mb-12 text-lg text-center text-gray-600">The terms of LBO loans vary significantly based on geography and the prevailing economic climate. This dashboard allows you to interactively compare key loan characteristics. Select a region and a time period to see how spreads, maturities, and fees change.</p>
+            <div class="p-4 bg-white shadow-lg md:p-8 rounded-xl">
+                <div class="flex flex-col items-center justify-center gap-4 mb-8 md:flex-row md:gap-8">
+                    <div class="flex items-center gap-2">
+                        <span class="font-medium text-gray-600">Region:</span>
+                        <div id="analysis-geo-toggles" class="flex p-1 space-x-1 bg-gray-200 rounded-full">
+                            <button data-geo="us" class="px-4 py-2 text-sm font-medium rounded-full active-tab">U.S.</button>
+                            <button data-geo="europe" class="px-4 py-2 text-sm font-medium rounded-full">Europe</button>
+                        </div>
+                    </div>
+                     <div class="flex items-center gap-2">
+                        <span class="font-medium text-gray-600">Period:</span>
+                        <div id="analysis-time-toggles" class="flex p-1 space-x-1 bg-gray-200 rounded-full">
+                            <button data-time="precrisis" class="px-4 py-2 text-sm font-medium rounded-full active-tab">Pre-Crisis</button>
+                            <button data-time="crisis" class="px-4 py-2 text-sm font-medium rounded-full">Crisis</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="kpi-cards" class="grid grid-cols-2 gap-4 mb-8 md:grid-cols-4 md:gap-6">
+                    <div class="kpi-card">
+                        <h4 class="text-sm font-medium text-gray-500 md:text-base">Avg. Spread</h4>
+                        <p id="kpi-spread" class="text-2xl md:text-4xl font-bold text-[#4A6FA5]">--</p>
+                        <p class="text-xs text-gray-400">basis points</p>
+                    </div>
+                    <div class="kpi-card">
+                        <h4 class="text-sm font-medium text-gray-500 md:text-base">Avg. Maturity</h4>
+                        <p id="kpi-maturity" class="text-2xl md:text-4xl font-bold text-[#4A6FA5]">--</p>
+                         <p class="text-xs text-gray-400">years</p>
+                    </div>
+                    <div class="kpi-card">
+                        <h4 class="text-sm font-medium text-gray-500 md:text-base">Avg. Deal Size</h4>
+                        <p id="kpi-deal-size" class="text-2xl md:text-4xl font-bold text-[#4A6FA5]">--</p>
+                         <p class="text-xs text-gray-400">$US million</p>
+                    </div>
+                    <div class="kpi-card">
+                        <h4 class="text-sm font-medium text-gray-500 md:text-base">Avg. # Tranches</h4>
+                        <p id="kpi-tranches" class="text-2xl md:text-4xl font-bold text-[#4A6FA5]">--</p>
+                         <p class="text-xs text-gray-400">per deal</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+                    <div class="max-w-2xl mx-auto chart-container">
+                         <canvas id="spreadComparisonChart"></canvas>
+                    </div>
+                    <div class="max-w-2xl mx-auto chart-container">
+                         <canvas id="maturityComparisonChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-24 text-white bg-gray-800">
+        <div class="container px-6 py-4 mx-auto text-sm text-center text-gray-400">
+            <p>Interactive report based on "The Economics of LBOs: Evidence from the Syndicated Loan Market" by João Pinto, European Review of Business Economics, 2022.</p>
+            <p>This visualization is for educational purposes.</p>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        const marketEvolutionData = {
+            labels: ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020'],
+            all: [48996, 40181, 48063, 85676, 108983, 173069, 276588, 414781, 149516, 20539, 52512, 86309, 47041, 80158, 96050, 87980, 92741, 134340, 165013, 144264, 55294],
+            us: [24663, 11253, 13184, 28492, 42243, 70794, 101098, 218461, 54593, 7115, 27016, 47548, 23675, 49593, 49339, 41988, 58267, 89701, 101669, 94135, 34401],
+            europe: [10570, 14087, 23796, 32663, 37795, 75812, 119926, 97143, 48311, 7388, 9073, 14669, 13661, 15813, 25073, 24432, 20113, 15038, 38409, 26518, 14819]
+        };
+        
+        const analysisData = {
+            us: {
+                precrisis: { spread: 424.70, maturity: 5.61, dealSize: 497.08, tranches: 3.09, upfrontFee: 147.00 },
+                crisis:    { spread: 469.39, maturity: 5.59, dealSize: 570.39, tranches: 3.30, upfrontFee: 159.29 } 
+            },
+            europe: {
+                precrisis: { spread: 293.87, maturity: 7.06, dealSize: 765.63, tranches: 5.15, upfrontFee: 101.18 },
+                crisis:    { spread: 309.93, maturity: 6.53, dealSize: 645.91, tranches: 4.34, upfrontFee: 99.88 }
+            }
+        };
+
+        let marketEvolutionChart, spreadComparisonChart, maturityComparisonChart;
+        
+        function createMarketEvolutionChart() {
+            const ctx = document.getElementById('marketEvolutionChart').getContext('2d');
+            marketEvolutionChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: marketEvolutionData.labels,
+                    datasets: [{
+                        label: 'Global LBO Loan Value ($M)',
+                        data: marketEvolutionData.all,
+                        borderColor: '#4A6FA5',
+                        backgroundColor: 'rgba(74, 107, 165, 0.1)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) { return '$' + (value / 1000) + 'B'; }
+                            }
+                        }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ` ${context.dataset.label}: $${(context.raw / 1000).toFixed(2)}B`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateMarketEvolutionChart(region) {
+            marketEvolutionChart.data.datasets[0].data = marketEvolutionData[region];
+            const labels = {
+                all: 'Global',
+                us: 'U.S.',
+                europe: 'Europe'
+            };
+            marketEvolutionChart.data.datasets[0].label = `${labels[region]} LBO Loan Value ($M)`;
+            marketEvolutionChart.update();
+        }
+
+        function createComparisonCharts() {
+             const spreadCtx = document.getElementById('spreadComparisonChart').getContext('2d');
+             spreadComparisonChart = new Chart(spreadCtx, {
+                 type: 'bar',
+                 data: {
+                     labels: ['U.S.', 'Europe'],
+                     datasets: [{
+                         label: 'Avg. Spread (bps)',
+                         data: [analysisData.us.precrisis.spread, analysisData.europe.precrisis.spread],
+                         backgroundColor: ['#4A6FA5', '#D48C70'],
+                     }]
+                 },
+                 options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                     plugins: { legend: { display: false }, title: { display: true, text: 'Average Spread (Pre-Crisis)' } },
+                     scales: { y: { beginAtZero: true, title: { display: true, text: 'Basis Points (bps)' } } }
+                 }
+             });
+
+             const maturityCtx = document.getElementById('maturityComparisonChart').getContext('2d');
+             maturityComparisonChart = new Chart(maturityCtx, {
+                 type: 'bar',
+                 data: {
+                     labels: ['U.S.', 'Europe'],
+                     datasets: [{
+                         label: 'Avg. Maturity (years)',
+                         data: [analysisData.us.precrisis.maturity, analysisData.europe.precrisis.maturity],
+                         backgroundColor: ['#4A6FA5', '#D48C70'],
+                     }]
+                 },
+                 options: {
+                     responsive: true,
+                     maintainAspectRatio: false,
+                     plugins: { legend: { display: false }, title: { display: true, text: 'Average Maturity (Pre-Crisis)' } },
+                     scales: { y: { beginAtZero: true, title: { display: true, text: 'Years' } } }
+                 }
+             });
+        }
+        
+        function updateDashboard(geo, time) {
+            const data = analysisData[geo][time];
+            
+            document.getElementById('kpi-spread').textContent = data.spread.toFixed(2);
+            document.getElementById('kpi-maturity').textContent = data.maturity.toFixed(2);
+            document.getElementById('kpi-deal-size').textContent = '$' + data.dealSize.toFixed(0);
+            document.getElementById('kpi-tranches').textContent = data.tranches.toFixed(2);
+
+            const comparisonData = {
+                spread: [analysisData.us[time].spread, analysisData.europe[time].spread],
+                maturity: [analysisData.us[time].maturity, analysisData.europe[time].maturity]
+            }
+            
+            const timeLabel = time === 'precrisis' ? 'Pre-Crisis' : 'Crisis';
+            
+            spreadComparisonChart.data.datasets[0].data = comparisonData.spread;
+            spreadComparisonChart.options.plugins.title.text = `Average Spread (${timeLabel})`;
+            spreadComparisonChart.update();
+            
+            maturityComparisonChart.data.datasets[0].data = comparisonData.maturity;
+            maturityComparisonChart.options.plugins.title.text = `Average Maturity (${timeLabel})`;
+            maturityComparisonChart.update();
+        }
+
+        createMarketEvolutionChart();
+        createComparisonCharts();
+        updateDashboard('us', 'precrisis'); 
+        
+        document.getElementById('market-evolution-toggles').addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON') {
+                const region = e.target.dataset.region;
+                updateMarketEvolutionChart(region);
+                this.querySelectorAll('button').forEach(btn => btn.classList.remove('active-tab'));
+                e.target.classList.add('active-tab');
+            }
+        });
+        
+        let currentGeo = 'us';
+        let currentTime = 'precrisis';
+
+        const geoToggles = document.getElementById('analysis-geo-toggles');
+        const timeToggles = document.getElementById('analysis-time-toggles');
+        
+        geoToggles.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON') {
+                currentGeo = e.target.dataset.geo;
+                updateDashboard(currentGeo, currentTime);
+                this.querySelectorAll('button').forEach(btn => btn.classList.remove('active-tab'));
+                e.target.classList.add('active-tab');
+            }
+        });
+
+        timeToggles.addEventListener('click', function(e) {
+            if (e.target.tagName === 'BUTTON') {
+                currentTime = e.target.dataset.time;
+                updateDashboard(currentGeo, currentTime);
+                this.querySelectorAll('button').forEach(btn => btn.classList.remove('active-tab'));
+                e.target.classList.add('active-tab');
+            }
+        });
+    });
+    </script>
+</body>
+</html>
