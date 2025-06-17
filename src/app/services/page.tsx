@@ -121,19 +121,6 @@ const services = [
 const ServicesPage: React.FC = () => {
   return (
     <div>
-      {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 w-full p-4 text-white bg-gray-900">
-        <ul className="flex justify-center">
-          {services.map((service) => (
-            <li key={service.href}>
-              <a href={`#${service.href}`} className="hover:underline">
-                {service.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-
       {/* Service Sections */}
       <div className="pt-16">
         {services.map((service) => (

@@ -64,10 +64,7 @@ export default function HeroSection() {
   };
 
   return (
-    <div
-      className="relative w-screen"
-      style={{ height: `calc(100vh - 130px)` }}
-    >
+    <div className="relative w-full" style={{ height: `100vh` }}>
       {/* Image Slideshow */}
       <div className="relative w-full h-full overflow-hidden">
         {images.map((image, index) => (
@@ -130,17 +127,6 @@ export default function HeroSection() {
         >
           Prepare for success with rigorous training and top-tier facilities.
         </motion.p>
-
-        {/* Button */}
-
-        <motion.button
-          transition={{ ease: "easeOut" }}
-          className="block px-10 py-3 lg:py-6 mt-6 text-xl text-white bg-green-600 rounded-lg hover:bg-green-700 text-center"
-        >
-          <Link href="/contact" className="no-underline">
-            Contact Us
-          </Link>
-        </motion.button>
       </motion.div>
 
       {/* now text will appear */}
@@ -165,9 +151,12 @@ export default function HeroSection() {
         <motion.span
           variants={textVariants}
           transition={{ duration: 1, ease: "easeInOut" }}
-          className={`block ${dmSans.className} lg:text-[60px] text-[30px] md:text-[1.75rem] font-[900] tracking-[-.02rem] leading-[1.2]`}
+          className={`flex flex-wrap ${dmSans.className} lg:text-[50px] text-[30px] md:text-[1.75rem] font-[900] tracking-[-.02rem] leading-[1.2] gap-2`}
         >
-          MIGHTY GURKHA TRAINING CENTER
+          <span>MIGHTY</span>
+          <span>GURKHA</span>
+          <span>TRAINING</span>
+          <span>CENTER</span>
         </motion.span>
 
         {/* Combined Subheading and Button as one child */}
@@ -177,14 +166,9 @@ export default function HeroSection() {
           className="mt-4"
         >
           {/* Subheading */}
-          <motion.p className="text-[1.3rem] font-bold shadow">
-            Prepare for success with rigorous training and top-tier facilities.
+          <motion.p className="text-[1.7rem] font-bold shadow text-green-600">
+            Prepare for success with our tailored system for your tough journey.
           </motion.p>
-
-          {/* Button */}
-          <motion.button className="px-10 py-6 mt-6 text-xl text-white bg-green-600 rounded-lg hover:bg-green-700">
-            Contact Us
-          </motion.button>
         </motion.div>
       </motion.div>
     </div>

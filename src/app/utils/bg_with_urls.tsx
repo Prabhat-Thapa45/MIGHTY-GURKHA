@@ -23,7 +23,7 @@ const Breadcrumbs: React.FC = () => {
   return (
     <nav
       aria-label="Breadcrumb"
-      className=" h-[130px] md:h-[200px] bg-green-600"
+      className=" h-[130px] md:h-[200px] bg-green-600 mt-[130px]"
       style={{
         width: "100%",
         display: "flex",

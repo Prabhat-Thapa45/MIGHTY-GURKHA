@@ -78,12 +78,12 @@ export default function Navbar() {
     },
     { name: "About Us", href: "/about-us" },
     { name: "Gallery", href: "/gallery" },
-    { name: "Our Team", href: "/ourteam" },
+    { name: "Our Team", href: "/our-team" },
     { name: "Contact", href: "/contact" },
   ];
 
   return (
-    <nav className="fixed relative z-50 w-full text-gray-800 bg-white">
+    <nav className="fixed z-30 w-full text-gray-800 bg-white">
       {/* Top Bar */}
       <div className={`h-[40px] bg-green-600 text-white flex justify-center items-center gap-5 text-xl `}>
         <div className="flex flex-row items-center gap-2">
@@ -350,24 +350,24 @@ export default function Navbar() {
                 {/* Social Media Icons */}
                 <div className="flex justify-center px-5 py-4 space-x-6">
                   <Link href="https://facebook.com" target="_blank">
-                    <div className="w-14 h-14 border-[1px] text-white border-gray-600 bg-blue-600 flex items-center justify-center rounded-lg">
+                    <div className="w-14 h-14 border-[1px] text-blue-600 border-gray-600 flex items-center justify-center rounded-lg">
                       <FaFacebookF className="text-3xl" />
                     </div>
                   </Link>
 
                   <Link href="https://instagram.com" target="_blank">
-                    <div className="w-14 h-14 border-[1px] text-white border-gray-600 bg-red-600 flex items-center justify-center rounded-lg">
+                    <div className="w-14 h-14 border-[1px] text-red-700 border-gray-600 flex items-center justify-center rounded-lg">
                       <FaInstagram className="text-3xl" />
                     </div>
                   </Link>
 
                   <Link href="https://tiktok.com" target="_blank">
-                    <div className="w-14 h-14 border-[1px] text-white border-gray-600 bg-gray-800 flex items-center justify-center rounded-lg">
+                    <div className="w-14 h-14 border-[1px] text-black border-gray-600  flex items-center justify-center rounded-lg">
                       <FaTiktok className="text-3xl" />
                     </div>
                   </Link>
                   <Link href="https://youtube.com" target="_blank">
-                    <div className="w-14 h-14 border-[1px] text-white border-gray-600 bg-red-600 flex items-center justify-center rounded-lg">
+                    <div className="w-14 h-14 border-[1px] text-red-600 border-gray-600 flex items-center justify-center rounded-lg">
                       <FaYoutube className="text-3xl" />
                     </div>
                   </Link>

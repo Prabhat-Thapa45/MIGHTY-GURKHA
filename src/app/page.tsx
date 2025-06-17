@@ -40,7 +40,7 @@ export default function Home() {
       <HeroSection />
 
       {/* About Section */}
-      <div className="mt-[70px] max-w-[1200px] bg-gray-100 mx-auto">
+      <div className="mt-[70px] max-w-[1200px] bg-gray-100 mx-auto px-5">
         <div className={`flex flex-row ${styles.aboutus}`}>
           {/* Left: Image */}
           <div
@@ -49,13 +49,15 @@ export default function Home() {
           >
             <div className="md:h-full w-[10px] bg-green-600 hidden sm:block"></div>
             <div className="overflow-hidden md:h-full w-full sm:max-w-[490px] relative">
-              <Image
-                src="/about.jpg"
-                alt="About Us"
-                width={480}
-                height={550}
-                className="object-cover transition-transform duration-500 scale-105 group-hover:scale-100 inset-0 absolute"
-              />
+              <div className="h-full w-full overflow-hidden">
+                <Image
+                  src="/about.jpg"
+                  alt="About Us"
+                  width={480}
+                  height={550}
+                  className="object-cover transition-transform duration-500 scale-105 group-hover:scale-100 inset-0 absolute"
+                />
+              </div>
             </div>
             <div className="absolute inset-0 bg-white opacity-10 transition-[transform,opacity] duration-500 group-hover:translate-y-[100%] group-hover:opacity-0"></div>
           </div>
@@ -63,12 +65,12 @@ export default function Home() {
           {/* Right: Text */}
           <div
             ref={txtRef}
-            className={`${styles.about_text} flex flex-col justify-between px-[15px] max-w-3xl opacity-0`}
+            className={`${styles.about_text} flex flex-col justify-between max-w-3xl opacity-0`}
           >
-            <h2 className="text-[3rem] md:text-[4.2em] font-extrabold text-green-700 pb-[50px] leading-[3.5rem] md:leading-[5rem]">
+            <h2 className="text-[3rem] md:text-[3.8em] font-extrabold text-green-700 pd-[30px] leading-[3.5rem] md:leading-[5rem]">
               Mighty Gurkha Training Center
             </h2>
-            <p className="mt-6 text-[16px] md:text-[18px] text-gray-700 leading-relaxed">
+            <p className="mt-5 md:mt-0 text-[16px] md:text-[18px] text-gray-700 leading-[2.1rem]">
               Mighty Gurkha Training Center (MGTC), proudly established in
               August 2022, stands as a beacon of excellence in British Army and
               Singapore Police Force preparation. Situated at Bagar-1, Pokhara,
@@ -82,7 +84,7 @@ export default function Home() {
               developing critical
             </p>
             <Link href="/about-us">
-              <button className="mt-6 px-6 py-8 w-[200px] font-bold text-xl text-white bg-green-700 rounded-xl hover:bg-green-800 transition-all duration-700">
+              <button className="mt-10 px-6 py-6 w-[170px] font-bold text-xl text-white bg-green-700 rounded-xl hover:bg-green-800 transition-all duration-700">
                 READ MORE
               </button>
             </Link>
