@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { DM_Sans } from "next/font/google";
 import { motion } from "framer-motion"; // Import motion
-import { Link } from "lucide-react";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
