@@ -113,7 +113,7 @@ export default function Navbar() {
       {/* Main Navbar */}
       {/* The height of this part needs to be considered for total navbar height */}
       <div className=""> {/* This div needs an explicit height if h-30 isn't reliable */}
-        <div className="flex items-center justify-between h-30"> {/* h-30 = 120px */}
+        <div className="flex items-center justify-between h-[90px]"> {/* h-30 = 120px */}
           {/* Logo + Title */}
           <div className="flex items-center">
             <Link className="flex flex-row items-center justify-center pl-10" href="/">
