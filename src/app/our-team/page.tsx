@@ -70,7 +70,6 @@ export default function OurTeamPage() {
     return acc;
   }, {} as Record<typeof ROLES[number], typeof TEAM>);
 
-  const ceo = byRole["CEO"]?.[0];
   const otherRoles = ROLES.filter((r) => r !== "CEO");
 
   return (
