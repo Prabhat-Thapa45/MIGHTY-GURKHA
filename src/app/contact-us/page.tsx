@@ -39,7 +39,7 @@ export default function Contact() {
                   OFFICE ADDRESS
                 </h2>
                 <p
-                  className={`${roboto.className} text-[15px] font-medium text-gray-700`}
+                  className={`${roboto.className} text-[16px] font-medium text-gray-700`}
                 >
                   Pokhara, Bagar-1, Kaski, Nepal
                 </p>
@@ -56,9 +56,10 @@ export default function Contact() {
                   PHONE NUMBER
                 </h2>
                 <p
-                  className={`${roboto.className} text-lg font-medium text-gray-700`}
+                  className={`${roboto.className} text-[16px] font-medium text-gray-700`}
                 >
-                  +81 962376573
+                  +977 9815143272 <br/>
+                  +977 9745450709
                 </p>
               </div>
             </div>
@@ -76,9 +77,9 @@ export default function Contact() {
                   EMAIL ADDRESS
                 </h2>
                 <p
-                  className={`${roboto.className} text-lg font-medium text-gray-700`}
+                  className={`${roboto.className} text-[16px] font-medium text-gray-700`}
                 >
-                  info@rginternational.com
+                  mightygurkha@gmail.com
                 </p>
               </div>
             </div>
@@ -93,9 +94,9 @@ export default function Contact() {
                   OFFICE HOURS
                 </h2>
                 <p
-                  className={`${roboto.className} text-lg font-medium text-gray-700`}
+                  className={`${roboto.className} text-[16px] font-medium text-gray-700`}
                 >
-                  Sunday-Friday, 10AM - 5PM
+                  Sunday-Friday, 10AM - 4:30PM
                 </p>
               </div>
             </div>

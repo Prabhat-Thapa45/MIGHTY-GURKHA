@@ -1,3 +1,4 @@
+// components/Breadcrumbs.tsx
 "use client";
 import React from "react";
 import Link from "next/link";
@@ -10,7 +11,6 @@ const Breadcrumbs: React.FC = () => {
   const pathname = usePathname();
   const pathSegments = pathname.split("/").filter(Boolean);
 
-  // Build breadcrumb items with their corresponding URLs
   const breadcrumbs = pathSegments.map((segment, idx) => {
     const href = "/" + pathSegments.slice(0, idx + 1).join("/");
     return {
@@ -23,7 +23,7 @@ const Breadcrumbs: React.FC = () => {
   return (
     <nav
       aria-label="Breadcrumb"
-      className=" h-[130px] md:h-[200px] bg-green-600 mt-[130px]"
+      className="block w-full h-[130px] md:h-[150px] bg-green-600 mt-[160px]" 
       style={{
         width: "100%",
         display: "flex",
@@ -31,11 +31,10 @@ const Breadcrumbs: React.FC = () => {
         alignItems: "center",
         padding: "0 1rem",
         justifyContent: "center",
-        fontSize: "1.3rem",
         overflowX: "auto",
       }}
     >
-      <div className="flex flex-row">
+      <div className="flex flex-row md:text-[18px]">
         <Link
           href="/"
           className="text-white hover:text-gray-200"
@@ -80,7 +79,7 @@ const Breadcrumbs: React.FC = () => {
         `}</style>
       </div>
       {breadcrumbs.length > 0 && (
-        <span className="pt-3 ml-4 text-5xl font-extrabold text-white">
+        <span className="ml-4 text-4xl md:text-5xl font-extrabold text-white">
           {breadcrumbs[breadcrumbs.length - 1].label}
         </span>
       )}

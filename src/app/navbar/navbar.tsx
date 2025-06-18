@@ -1,3 +1,4 @@
+// components/Navbar.tsx
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -22,7 +23,6 @@ export default function Navbar() {
   const [isClient, setIsClient] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
-  // This function is now only for the mobile menu
   const toggleDropdown = (name: string | null) => {
     setOpenDropdown(openDropdown === name ? null : name);
   };
@@ -34,8 +34,7 @@ export default function Navbar() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  
-  // Close mobile dropdown when path changes
+
   useEffect(() => {
     if (isOpen) {
       setIsOpen(false);
@@ -79,13 +78,18 @@ export default function Navbar() {
     { name: "About Us", href: "/about-us" },
     { name: "Gallery", href: "/gallery" },
     { name: "Our Team", href: "/our-team" },
-    { name: "Contact", href: "/contact" },
+    { name: "Contact Us", href: "/contact-us" },
   ];
 
   return (
     <nav className="fixed z-30 w-full text-gray-800 bg-white">
-      {/* Top Bar */}
-      <div className={`h-[40px] bg-green-600 text-white flex justify-center items-center gap-5 text-xl `}>
+      {/* Top Bar - This div now gets the safe area padding */}
+      <div
+        className={`h-[40px] bg-green-600 text-white flex justify-center items-center gap-5 text-xl`}
+       style={{
+          paddingTop: 'env(safe-area-inset-top)',
+        }}
+      >
         <div className="flex flex-row items-center gap-2">
           <FaPhoneAlt />
           :-
@@ -107,8 +111,9 @@ export default function Navbar() {
       </div>
 
       {/* Main Navbar */}
-      <div className="">
-        <div className="flex items-center justify-between h-30">
+      {/* The height of this part needs to be considered for total navbar height */}
+      <div className=""> {/* This div needs an explicit height if h-30 isn't reliable */}
+        <div className="flex items-center justify-between h-30"> {/* h-30 = 120px */}
           {/* Logo + Title */}
           <div className="flex items-center">
             <Link className="flex flex-row items-center justify-center pl-10" href="/">
@@ -129,14 +134,12 @@ export default function Navbar() {
           {isClient && !isMobile && (
             <div className="flex justify-center flex-grow space-x-10 h-30 items-center">
               {links.map((link) => (
-                // *** CHANGED: Added onMouseLeave to the entire link container ***
                 <div
                   key={link.name}
                   className="relative"
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <div
-                    // *** CHANGED: Added onMouseEnter to trigger the dropdown on hover ***
                     onMouseEnter={() => link.subLinks && setOpenDropdown(link.name)}
                     className="relative group"
                   >
@@ -152,7 +155,6 @@ export default function Navbar() {
                         </div>
                       </Link>
                     ) : (
-                      // *** CHANGED: This is now a div, not a button, as hover is handled by the parent ***
                       <div className="w-full h-[90px] py-1 text-[18px] font-[700] flex items-center justify-between cursor-pointer">
                         <div className="relative">
                           <span className={`${link.subLinks?.some(sub => pathname.startsWith(sub.href)) ? "text-green-600" : "hover:text-green-600"}`}>
@@ -175,8 +177,7 @@ export default function Navbar() {
                       </div>
                     )}
                   </div>
-                  
-                  {/* Dropdown Menu - No changes needed here, it's driven by the state which we now control with hover */}
+
                   <AnimatePresence>
                     {link.subLinks && openDropdown === link.name && (
                       <motion.div
@@ -190,7 +191,6 @@ export default function Navbar() {
                           <Link
                             key={subIndex}
                             href={subLink.href}
-                            // *** ADDED: Close dropdown after clicking a link ***
                             onClick={() => setOpenDropdown(null)}
                             className="block px-4 py-3 text-[18px] whitespace-nowrap hover:bg-green-600 hover:text-white"
                           >
@@ -238,9 +238,12 @@ export default function Navbar() {
                 exit={{ x: "100%" }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
                 className="fixed top-0 right-0 w-[300px] h-screen bg-white shadow-md flex flex-col py-5 z-20"
+                style={{
+                  // Push mobile menu content down by safe area
+                  paddingTop: 'env(safe-area-inset-top)',
+                }}
               >
-                 {/* ... (Mobile header with logo and close button remains the same) ... */}
-                <div className="py-3">
+                 <div className="py-3">
                   <button onClick={() => setIsOpen(false)} className="absolute flex items-center justify-center w-10 h-10 top-11 right-4">
                      <motion.div animate={isOpen ? { rotate: 180 } : { rotate: 0 }} transition={{ duration: 1.3, ease: "easeInOut" }} className="relative flex items-center justify-center w-6 h-6 p-4 rounded-lg hover:bg-gray-200">
                       <span className="absolute w-6 h-[2px] bg-gray-800 rotate-45"></span>
@@ -260,7 +263,6 @@ export default function Navbar() {
                     {link.href ? (
                       <Link
                         href={link.href}
-                        // This already closes the main menu, which is correct
                         onClick={() => setIsOpen(false)}
                         className="w-full block text-left pl-[25px] py-3 text-[16px] font-[700]"
                       >
@@ -270,7 +272,6 @@ export default function Navbar() {
                       </Link>
                     ) : (
                       <button
-                        // Click to toggle dropdown, this is correct for mobile
                         onClick={() => toggleDropdown(link.name)}
                         className="w-full block text-left pl-[25px] py-3 text-[16px] font-[700] flex justify-between items-center"
                       >
@@ -284,8 +285,7 @@ export default function Navbar() {
                         )}
                       </button>
                     )}
-                    
-                    {/* *** CHANGED: Mobile dropdown uses AnimatePresence for smooth open/close *** */}
+
                     <AnimatePresence>
                       {link.subLinks && openDropdown === link.name && (
                         <motion.div
@@ -299,7 +299,6 @@ export default function Navbar() {
                               <Link
                                 key={subIndex}
                                 href={subLink.href}
-                                // *** CHANGED: On click, close the main menu AND reset the dropdown state ***
                                 onClick={() => {
                                   setIsOpen(false);
                                   setOpenDropdown(null);
@@ -319,9 +318,8 @@ export default function Navbar() {
                     )}
                   </div>
                 ))}
-                
-                 {/* Bottom Separator Line */}
-                <div
+
+                 <div
                   className={`${isOpen} ? w-full h-[1px] bg-gray-300 : ""`}
                 ></div>
 
@@ -372,7 +370,6 @@ export default function Navbar() {
                     </div>
                   </Link>
                 </div>
-
               </motion.div>
             </>
           )}
