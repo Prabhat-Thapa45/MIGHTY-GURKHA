@@ -36,10 +36,10 @@ export function TeamCard({
       {/* Role Label */}
       <span
         className={`
-          absolute left-1/2 -translate-x-1/2 top-[300px]
+          absolute left-1/2 -translate-x-1/2 top-[40px] lg:top-[300px]
           text-[25px] font-bold text-gray-600
           transition-all duration-700 ease-in-out
-          group-hover:top-[45px] group-hover:text-shadow-2xs
+          group-hover:top-[45px] text-shadow-2xs
           group-hover:text-gray-50 z-10
         `}
       >
@@ -63,7 +63,7 @@ export function TeamCard({
       </div>
 
       {/* Name */}
-      <span className="text-[26px] font-bold text-gray-200 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 ease-in-out">
+      <span className="text-[26px] font-bold opacity-100 text-gray-700 lg:text-gray-200 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-1000 ease-in-out">
         {name}
       </span>
     </div>

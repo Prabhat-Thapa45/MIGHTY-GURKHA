@@ -4,13 +4,13 @@ import React from "react";
 import { Bed, Utensils, Wifi } from "lucide-react"; // Using lucide-react for icons
 import Image from "next/image";
 
-function Hostel() {
+export default function Education() {
   return (
-    <div className="relative w-full">
+    <div className="relative w-full bg-white p-10">
       {" "}
       {/* Removed h-[450px] here */}
       <Image
-        src="/hostel.jpg"
+        src="/education.jpg"
         alt="Hostel Facilities"
         width={600}
         height={400}
@@ -45,4 +45,4 @@ function Hostel() {
   );
 }
 
-export default Hostel;
+

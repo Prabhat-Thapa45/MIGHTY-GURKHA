@@ -1,11 +1,24 @@
 "use client";
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+// Detects if screen width is medium or larger
+function useIsMediumUp() {
+  const [isMd, setIsMd] = useState(false);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const handleResize = (e: MediaQueryListEvent) => setIsMd(e.matches);
 
+    setIsMd(mediaQuery.matches);
+    mediaQuery.addEventListener("change", handleResize);
+
+    return () => mediaQuery.removeEventListener("change", handleResize);
+  }, []);
+
+  return isMd;
+}
 
 type Story = {
   name: string;
@@ -39,47 +52,60 @@ const stories: Story[] = [
 ];
 
 export default function SuccessStories() {
+  const isMd = useIsMediumUp();
+
   return (
     <section className="py-16 bg-slate-50 mt-[70px]">
       <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className={` text-[3rem] md:text-[4.2em] font-extrabold text-green-700 tracking-[-.1.5rem]`}>
+        <h2 className="text-[36px] md:text-[50px] font-extrabold text-green-700 tracking-[-1px] leading-[-10px]">
           Success Stories
         </h2>
         <p className="text-gray-600 mb-12 text-[15px] md:text-[18px]">
           Hear from some of our recent graduates who’re now serving with pride.
         </p>
-        
-        {/* Grid on md+, horizontal scroll on mobile */}
+
         <div className="flex gap-10 overflow-x-auto md:grid md:grid-cols-3 md:overflow-visible">
-          {stories.map((s, i) => (
-            <motion.div
-              key={i}
-              className="bg-white rounded-lg shadow-md flex-shrink-0 w-72 md:w-auto"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: i * 0.2 }}
-              whileHover={{ scale: 1.03 }}
-            >
-              <div className="relative h-80 w-full rounded-t-xl overflow-hidden">
-                <Image
-                  src={s.photo}
-                  alt={s.name}
-                  fill
-                  className="object-cover object-top"
-                />
+          {stories.map((s, i) => {
+            const Card = (
+              <div
+                key={i}
+                className="bg-white rounded-lg shadow-md flex-shrink-0 w-72 md:w-auto"
+              >
+                <div className="relative h-80 w-full rounded-t-xl overflow-hidden">
+                  <Image
+                    src={s.photo}
+                    alt={s.name}
+                    fill
+                    className="object-cover object-top"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-[20px] font-semibold text-green-800">
+                    {s.name}
+                  </h3>
+                  <span className="text-[15px] text-gray-500">{s.rank}</span>
+                  <p className="mt-4 text-gray-700 text-[15px] leading-relaxed">
+                    “{s.quote}”
+                  </p>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-green-800">
-                  {s.name}
-                </h3>
-                <span className="text-sm text-gray-500">{s.rank}</span>
-                <p className="mt-4 text-gray-700 text-[15px] leading-relaxed">
-                  “{s.quote}”
-                </p>
-              </div>
-            </motion.div>
-          ))}
+            );
+
+            return isMd ? (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, delay: i * 0.2 }}
+                whileHover={{ scale: 1.03 }}
+              >
+                {Card}
+              </motion.div>
+            ) : (
+              Card
+            );
+          })}
         </div>
       </div>
     </section>

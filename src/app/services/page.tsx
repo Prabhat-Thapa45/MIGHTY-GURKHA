@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import Hostel from "./hostel";
+import Breadcrumbs from "../utils/bg_with_urls";
+import Education from "./education";
 
 const services = [
   {
@@ -16,14 +18,7 @@ const services = [
     href: "education",
     description: "Guidance and coaching for academic success.",
     content: (
-      <>
-        <p>We offer structured educational guidance tailored to individual needs, focusing on exam preparation and concept building.</p>
-        <ul className="mt-4 list-disc">
-          <li>Comprehensive coaching</li>
-          <li>Expert tutors with real-world experience</li>
-          <li>Interactive study materials</li>
-        </ul>
-      </>
+      <Education />
     ),
   },
   {
@@ -122,12 +117,13 @@ const ServicesPage: React.FC = () => {
   return (
     <div>
       {/* Service Sections */}
-      <div className="pt-16">
+      <div className="flex flex-col bg-slate-100 mb-10 text-center">
+        <Breadcrumbs />
         {services.map((service) => (
           <section
             id={service.href}
             key={service.href}
-            className="flex flex-col items-center justify-center h-screen p-6 bg-gray-100 border-b-2"
+            className="flex flex-col items-center justify-center p-6 bg-slate-100 text-gray-800"
           >
             <h2 className="mb-4 text-3xl font-bold">{service.name}</h2>
             <p className="max-w-xl mb-4 text-lg text-center">{service.description}</p>

@@ -48,8 +48,8 @@ const Footer = () => {
   };
 
   return (
-    <footer className="py-8 mt-10 text-white bg-gray-900 h-[320px]">
-      <div className="flex flex-col justify-between px-6 mx-auto max-w-7xl md:flex-row">
+    <footer className="py-8 mt-10 text-white bg-gray-900 md:h-[320px] h-auto">
+      <div className="flex flex-col justify-between px-6 mx-auto md:flex-row">
         
         {/* Quick Links */}
         <div className="mb-6 md:mb-0">

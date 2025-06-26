@@ -24,13 +24,13 @@ export default function Contact() {
         <Breadcrumbs />
       {/* Contact Info & Map Container */}
       <div
-        className={`flex flex-col md:flex-row justify-center lg:w-6xl mt-10 sm:mt-16 lg:mt-20 gap-10 mb-4`}
+        className={`flex flex-col md:flex-row justify-center lg:w-[860px] mt-10 sm:mt-16 lg:mt-20 gap-[40px] mb-4`}
       >
         {/* Contact Details */}
         <div className="w-full lg:w-1/2">
           <div className="space-y-6">
             {/* Address */}
-            <div className="bg-gray-100 p-6 flex items-center gap-6 transition-transform duration-500 hover:translate-z-16 hover:scale-105 hover:shadow-xl">
+            <div className="bg-gray-100 p-2px md:p-6 flex items-center gap-6 transition-transform duration-500 hover:translate-z-16 hover:scale-105 hover:shadow-xl">
               <IoLocationOutline className="text-white text-6xl bg-green-600 rounded-full p-3 w-[60px] h-[60px]" />
               <div>
                 <h2
@@ -47,7 +47,7 @@ export default function Contact() {
             </div>
 
             {/* Phone */}
-            <div className="bg-gray-100 p-6 flex items-center gap-6 transition-transform duration-500 hover:translate-z-16 hover:scale-105 hover:shadow-xl">
+            <div className="bg-gray-100 p-2px md:p-6 flex items-center gap-6 transition-transform duration-500 hover:translate-z-16 hover:scale-105 hover:shadow-xl">
               <MdOutlineLocalPhone className="text-white text-6xl bg-green-600 rounded-full p-3 w-[60px] h-[60px]" />
               <div>
                 <h2
@@ -65,7 +65,7 @@ export default function Contact() {
             </div>
 
             {/* Email */}
-            <div className="bg-gray-100 p-6 flex items-center gap-6 transition-transform duration-500 hover:translate-z-16 hover:scale-105 hover:shadow-xl">
+            <div className="bg-gray-100 p-2px md:p-6 flex items-center gap-6 transition-transform duration-500 hover:translate-z-16 hover:scale-105 hover:shadow-xl">
               <div className="rounded-full p-3 w-[60px] h-[60px] bg-green-600 text-center flex justify-center items-center">
                 <GoMail className="text-white text-7xl" />
               </div>
@@ -85,7 +85,7 @@ export default function Contact() {
             </div>
 
             {/* Office Hours */}
-            <div className="bg-gray-100 p-6 flex items-center gap-6 transition-transform duration-500 hover:translate-z-16 hover:scale-105 hover:shadow-xl">
+            <div className="bg-gray-100 p-2px md:p-6 flex items-center gap-6 transition-transform duration-500 hover:translate-z-16 hover:scale-105 hover:shadow-xl">
               <FaRegClock className="text-white text-6xl bg-green-600 rounded-full p-3 w-[60px] h-[60px]" />
               <div>
                 <h2

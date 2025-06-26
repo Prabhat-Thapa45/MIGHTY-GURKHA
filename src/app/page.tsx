@@ -65,12 +65,12 @@ export default function Home() {
           {/* Right: Text */}
           <div
             ref={txtRef}
-            className={`${styles.about_text} flex flex-col justify-between max-w-3xl opacity-0`}
+            className={`${styles.about_text} flex flex-col justify-between max-w-[550] opacity-0`}
           >
-            <h2 className="text-[3rem] md:text-[3.8em] font-extrabold text-green-700 pd-[30px] leading-[3.5rem] md:leading-[5rem]">
+            <h2 className="md:mt-[0] mt-[30px] text-[3rem] md:text-[45px] font-extrabold text-green-700 pd-[30px] leading-[40px] md:leading-[55px]">
               Mighty Gurkha Training Center
             </h2>
-            <p className="mt-5 md:mt-0 text-[16px] md:text-[18px] text-gray-700 leading-[2.1rem]">
+            <p className="mt-[30px] md:mt-0 text-[16px] md:text-[18px] text-gray-700 leading-[30px]">
               Mighty Gurkha Training Center (MGTC), proudly established in
               August 2022, stands as a beacon of excellence in British Army and
               Singapore Police Force preparation. Situated at Bagar-1, Pokhara,
@@ -84,7 +84,7 @@ export default function Home() {
               developing critical
             </p>
             <Link href="/about-us">
-              <button className="mt-10 px-6 py-6 w-[170px] font-bold text-xl text-white bg-green-700 rounded-xl hover:bg-green-800 transition-all duration-700">
+              <button className="mt-[30px] rounded py-3 px-[18px] md:py-[18px] lg:w-[170px] font-[900] text-[15px] text-white bg-green-700 lg:rounded-[8px] hover:bg-green-800 transition-all duration-700">
                 READ MORE
               </button>
             </Link>

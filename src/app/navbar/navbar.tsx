@@ -29,7 +29,7 @@ export default function Navbar() {
 
   useEffect(() => {
     setIsClient(true);
-    const handleResize = () => setIsMobile(window.innerWidth <= 1100);
+    const handleResize = () => setIsMobile(window.innerWidth <= 1240);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -85,7 +85,7 @@ export default function Navbar() {
     <nav className="fixed z-30 w-full text-gray-800 bg-white">
       {/* Top Bar - This div now gets the safe area padding */}
       <div
-        className={`h-[40px] bg-green-600 text-white flex justify-center items-center gap-5 text-xl`}
+        className={`h-[40px] bg-green-600 text-white flex justify-center items-center gap-5 text-[15px] lg:text-[18px]`}
        style={{
           paddingTop: 'env(safe-area-inset-top)',
         }}
@@ -111,9 +111,8 @@ export default function Navbar() {
       </div>
 
       {/* Main Navbar */}
-      {/* The height of this part needs to be considered for total navbar height */}
-      <div className=""> {/* This div needs an explicit height if h-30 isn't reliable */}
-        <div className="flex items-center justify-between h-[90px]"> {/* h-30 = 120px */}
+      <div className=""> 
+        <div className="flex items-center justify-between h-[90px]"> 
           {/* Logo + Title */}
           <div className="flex items-center">
             <Link className="flex flex-row items-center justify-center pl-10" href="/">
@@ -132,7 +131,7 @@ export default function Navbar() {
 
           {/* === DESKTOP NAVIGATION === */}
           {isClient && !isMobile && (
-            <div className="flex justify-center flex-grow space-x-10 h-30 items-center">
+            <div className="flex justify-center flex-grow space-x-10 h-[90px] items-center">
               {links.map((link) => (
                 <div
                   key={link.name}
@@ -150,7 +149,7 @@ export default function Navbar() {
                             {link.name}
                           </span>
                           <span
-                            className={`absolute left-0 top-full mt-10 h-0.5 w-full bg-green-600 transform ${pathname === link.href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"} transition-transform duration-500 origin-left`}
+                            className={`absolute left-0 top-full mt-[30px] h-0.5 w-full bg-green-600 transform ${pathname === link.href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"} transition-transform duration-500 origin-left`}
                           />
                         </div>
                       </Link>
@@ -161,7 +160,7 @@ export default function Navbar() {
                             {link.name}
                           </span>
                           <span
-                            className={`absolute left-0 top-full mt-10 h-0.5 w-full bg-green-600 transform ${link.subLinks?.some(sub => pathname.startsWith(sub.href)) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"} transition-transform duration-500 origin-left`}
+                            className={`absolute left-0 top-full mt-[30px] z-10 h-0.5 w-full bg-green-600 transform ${link.subLinks?.some(sub => pathname.startsWith(sub.href)) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"} transition-transform duration-500 origin-left`}
                           />
                         </div>
 
