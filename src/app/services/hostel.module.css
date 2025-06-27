@@ -1,0 +1,13 @@
+.hostel{
+    flex-direction: row;
+}
+@media (max-width: 900px){
+    .hostel{
+        flex-direction: column;
+        width: 90%;
+    }
+    .hostelText{
+        margin-top: 20px;
+        margin-left: 0;
+    }
+}

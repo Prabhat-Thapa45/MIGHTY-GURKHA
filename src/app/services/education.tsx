@@ -1,48 +1,68 @@
-// components/Hostel.jsx (or wherever your Hostel component is located)
+// components/Hostel.jsx
 
 import React from "react";
-import { Bed, Utensils, Wifi } from "lucide-react"; // Using lucide-react for icons
+import { Bed, Utensils, Wifi } from "lucide-react";
 import Image from "next/image";
+import styles from "./hostel.module.css"
 
-export default function Education() {
+export default function Hostel() {
   return (
-    <div className="relative w-full bg-white p-10">
-      {" "}
-      {/* Removed h-[450px] here */}
-      <Image
-        src="/education.jpg"
-        alt="Hostel Facilities"
-        width={600}
-        height={400}
-        className="object-cover w-full h-auto rounded-lg shadow-lg"
-      />
-      <div className="mt-6">
-        {" "}
-        {/* Added some top margin for spacing */}
-        <p className="mt-2 text-lg text-gray-700">
-          Your Home Away From Home! Here we try to offer you with every needs
-          and amenities required for you to achieve the goals. We have a
-          wonderful staffs working for your best intrest. From good food to
-          maitain your hygiene and also to train we provide you with all the
-          tools you need.
-        </p>
+    <div className={`flex ${styles.hostel} justify-center items-center px-[20px] max-w-[1200px] mx-auto`}>
+      {/* Left: Image */}
+      <div className="w-full ">
+        <Image
+          src="/hostel.jpg"
+          alt="Hostel Facilities"
+          width={600}
+          height={400}
+          className="w-full h-auto object-cover rounded-[8px] shadow-[0_4px_6px_rgba(0,0,0,0.1)]"
+        />
       </div>
-      <div className="grid grid-cols-2 gap-6 mt-6 md:grid-cols-3">
-        <div className="flex flex-col items-center p-4 transition-transform duration-300 bg-green-100 rounded-lg shadow-md hover:scale-105">
-          <Bed className="mb-2 text-5xl text-green-600" />
-          <p className="font-semibold">Comfortable Accommodation</p>
-        </div>
-        <div className="flex flex-col items-center p-4 transition-transform duration-300 bg-green-100 rounded-lg shadow-md hover:scale-105">
-          <Utensils className="mb-2 text-5xl text-green-600" />
-          <p className="font-semibold">Nutritious Meals</p>
-        </div>
-        <div className="flex flex-col items-center p-4 transition-transform duration-300 bg-green-100 rounded-lg shadow-md hover:scale-105">
-          <Wifi className="mb-2 text-5xl text-green-600" />
-          <p className="font-semibold">Free Wi-Fi Access</p>
+
+      {/* Right: Content */}
+      <div className={`w-full ${styles.hostelText} md:ml-[24px] flex flex-col justify-between top-0`}>
+        <h2 className="text-[36px] md:text-[45px] font-extrabold text-green-700 leading-[40px] md:leading-[55px] text-left">
+          HOSTEL
+        </h2>
+
+        <h2 className="text-[16px] text-gray-600 md:text-[18px] font-[600] leading-[28px] text-left">
+          Your Home Away From Home
+        </h2>
+
+        <p className="mt-[16px] text-[15px] sm:text-[16px] text-gray-700 leading-[26px] text-left">
+          Cozy rooms, three wholesome meals, free Wi-Fi and clean common
+          areas—plus dedicated spots and tools for study or downtime. Our
+          friendly team in Mighty Gurkha Training Center is here to make sure
+          you feel supported, energized and ready for whatever comes next.{" "}
+          <br />
+          <br />
+          Whether you&apos;re training, studying, or simply recharging,
+          everything is designed to help you feel at ease. From the moment you
+          arrive, you&apos;ll find a calm and welcoming space that encourages
+          focus, growth and connection with others on the same journey.
+        </p>
+
+        {/* Services grid */}
+        <div className=" my-[32px]">
+          <h2 className="text-[16px] text-gray-600 md:text-[18px] font-[600] leading-[28px] text-left">
+          Facilities
+        </h2>
+          <div className="flex flex-row gap-[16px]">
+            <div className="flex gap-[4px] items-center transition-transform duration-300 hover:scale-105">
+              <Bed className="text-[32px] mb-[8px] text-green-600" />
+              <p className="font-[400] text-[14px]">Cozy Rooms</p>
+            </div>
+            <div className="flex gap-[4px] items-center transition-transform duration-300 hover:scale-105">
+              <Utensils className="text-[32px] mb-[8px] text-green-600" />
+              <p className="font-[400] text-[14px]">Fresh Meals</p>
+            </div>
+            <div className="flex gap-[4px] items-center transition-transform duration-300 hover:scale-105">
+              <Wifi className="text-[32px]  mb-[8px] text-green-600" />
+              <p className="font-[400] text-[14px]">Free Wi-Fi</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
-

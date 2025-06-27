@@ -60,7 +60,7 @@ export default function SuccessStories() {
         <h2 className="text-[36px] md:text-[50px] font-extrabold text-green-700 tracking-[-1px] leading-[-10px]">
           Success Stories
         </h2>
-        <p className="text-gray-600 mb-12 text-[15px] md:text-[18px]">
+        <p className="text-gray-600 mb-12 text-[15px] md:text-[18px] leading-[24px]">
           Hear from some of our recent graduates who’re now serving with pride.
         </p>
 

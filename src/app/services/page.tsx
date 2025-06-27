@@ -125,8 +125,6 @@ const ServicesPage: React.FC = () => {
             key={service.href}
             className="flex flex-col items-center justify-center p-6 bg-slate-100 text-gray-800"
           >
-            <h2 className="mb-4 text-3xl font-bold">{service.name}</h2>
-            <p className="max-w-xl mb-4 text-lg text-center">{service.description}</p>
             <div className="text-gray-700 max-w-[1100px] mx-auto  text-md">{service.content}</div>
           </section>
         ))}

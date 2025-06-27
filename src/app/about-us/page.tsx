@@ -55,7 +55,7 @@ export default function AboutPage() {
       <Breadcrumbs />
 
       <section className="max-w-[1100px] mx-auto rounded-lg p-8 mt-10 bg-white">
-        <h1 className="mb-6 text-4xl font-bold text-center text-green-700">
+        <h1 className="mb-6 text-[30px] font-bold text-center text-green-700 leading-[35px]">
           About Mighty Gurkha Training Center
         </h1>
 
@@ -166,7 +166,7 @@ export default function AboutPage() {
     ${founderVisible ? "opacity-100 translate-y-2" : "opacity-0"}
   `}
             >
-              <h3 className="pt-5 md:pt-0 text-[3rem] md:text-[3.8rem] font-extrabold text-green-700 leading-[3.5rem] md:leading-[5rem] self-start">
+              <h3 className="pt-5 md:pt-0 text-[30px] md:text-[3rem] font-extrabold text-green-700 leading-[35px] md:leading-[45px] self-start">
                 Message from the Founder
               </h3>
 

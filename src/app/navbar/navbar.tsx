@@ -208,12 +208,12 @@ export default function Navbar() {
           {isMobile && (
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="z-20 p-2 mr-4 rounded-md focus:outline-none"
+              className="z-20 p-[5px] mr-[6px] rounded-md focus:outline-none"
             >
-              <div className="space-y-1.5">
-                  <span className={`block w-6 h-0.5 bg-gray-800 transition-transform duration-500 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
-                  <span className={`block w-6 h-0.5 bg-gray-800 transition-opacity duration-500 ${isOpen ? "opacity-0" : "opacity-100"}`} />
-                  <span className={`block w-6 h-0.5 bg-gray-800 transition-transform duration-500 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+              <div className="space-y-[4px]">
+                  <span className={`block w-[20px] h-[2px] bg-gray-800 transition-transform duration-500 ${isOpen ? "rotate-45 translate-y-2" : ""}`} />
+                  <span className={`block w-[20px] h-[2px] bg-gray-800 transition-opacity duration-500 ${isOpen ? "opacity-0" : "opacity-100"}`} />
+                  <span className={`block w-[20px] h-[2px] bg-gray-800 transition-transform duration-500 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`} />
               </div>
             </button>
           )}
@@ -242,18 +242,20 @@ export default function Navbar() {
                   paddingTop: 'env(safe-area-inset-top)',
                 }}
               >
-                 <div className="py-3">
-                  <button onClick={() => setIsOpen(false)} className="absolute flex items-center justify-center w-10 h-10 top-11 right-4">
-                     <motion.div animate={isOpen ? { rotate: 180 } : { rotate: 0 }} transition={{ duration: 1.3, ease: "easeInOut" }} className="relative flex items-center justify-center w-6 h-6 p-4 rounded-lg hover:bg-gray-200">
+                 <div className="py-[15px] flex flex-row items-center justify-between ">
+                  
+                  <div className="flex items-center justify-start pl-5">
+                    <Image src="/mgtc.png" alt="Mighty Gurkha Logo" width={48} height={48} priority/>
+                    <span className="ml-[4px] text-[18px] font-bold text-black">Mighty<span className="text-green-600">Gurkha</span></span>
+                  </div>
+                  <button onClick={() => setIsOpen(false)} className=" w-[20px] h-[20px] mr-[8px]">
+                     <motion.div animate={isOpen ? { rotate: 180 } : { rotate: 0 }} transition={{ duration: 1.3, ease: "easeInOut" }} className="relative flex items-center justify-center rounded-lg hover:bg-gray-200">
                       <span className="absolute w-6 h-[2px] bg-gray-800 rotate-45"></span>
                       <span className="absolute w-6 h-[2px] bg-gray-800 -rotate-45"></span>
                     </motion.div>
                   </button>
-                  <div className="flex items-center justify-start pb-4 pl-5">
-                    <Image src="/mgtc.png" alt="Mighty Gurkha Logo" width={50} height={50} priority/>
-                    <span className="ml-3 text-2xl font-bold text-black">Mighty<span className="text-green-600">Gurkha</span></span>
-                  </div>
                 </div>
+                
                 <div className="w-full h-[1px] bg-gray-300"></div>
 
                 {/* Mobile Links */}
@@ -263,7 +265,7 @@ export default function Navbar() {
                       <Link
                         href={link.href}
                         onClick={() => setIsOpen(false)}
-                        className="w-full block text-left pl-[25px] py-3 text-[16px] font-[700]"
+                        className="w-full block text-left pl-[25px] py-3 text-[15px] font-[700]"
                       >
                          <span className={`${pathname === link.href ? "text-green-600" : "hover:text-green-600"}`}>
                           {link.name}
@@ -272,7 +274,7 @@ export default function Navbar() {
                     ) : (
                       <button
                         onClick={() => toggleDropdown(link.name)}
-                        className="w-full block text-left pl-[25px] py-3 text-[16px] font-[700] flex justify-between items-center"
+                        className="w-full block text-left pl-[25px] py-3 text-[15px] font-[700] flex justify-between items-center"
                       >
                         <span className={`${link.subLinks?.some(sub => pathname.startsWith(sub.href))? "text-green-600": "hover:text-green-600"}`}>
                           {link.name}
@@ -302,7 +304,7 @@ export default function Navbar() {
                                   setIsOpen(false);
                                   setOpenDropdown(null);
                                 }}
-                                className="block py-2 text-base hover:text-green-600"
+                                className="block py-2 text-[15px] hover:text-green-600"
                               >
                                 {subLink.name}
                               </Link>
@@ -324,10 +326,10 @@ export default function Navbar() {
 
                 {/* Call Icon & Phone Numbers */}
                 <div className="flex items-center ml-[10px] px-5 py-4 mt-5">
-                  <div className="flex items-center justify-center w-12 h-12 bg-green-600 rounded-full">
+                  <div className="flex items-center justify-center w-[45px] h-[45px] bg-green-600 rounded-full">
                     <FaPhoneAlt className="text-xl text-white" />
                   </div>
-                  <div className="ml-[16px] text-[16px] flex flex-col tracking-wide">
+                  <div className="ml-[16px] text-[15px] flex flex-col tracking-wide">
                     <Link
                       href="tel:+977 9851054333"
                       className="font-bold text-gray-800"
@@ -347,24 +349,24 @@ export default function Navbar() {
                 {/* Social Media Icons */}
                 <div className="flex justify-center px-5 py-4 space-x-6">
                   <Link href="https://facebook.com" target="_blank">
-                    <div className="w-14 h-14 border-[1px] text-blue-600 border-gray-600 flex items-center justify-center rounded-lg">
+                    <div className="w-[40px] h-[40px] border-[1px] text-blue-600 border-gray-600 flex items-center justify-center rounded-lg">
                       <FaFacebookF className="text-3xl" />
                     </div>
                   </Link>
 
                   <Link href="https://instagram.com" target="_blank">
-                    <div className="w-14 h-14 border-[1px] text-red-700 border-gray-600 flex items-center justify-center rounded-lg">
+                    <div className="w-[40px] h-[40px] border-[1px] text-red-700 border-gray-600 flex items-center justify-center rounded-lg">
                       <FaInstagram className="text-3xl" />
                     </div>
                   </Link>
 
                   <Link href="https://tiktok.com" target="_blank">
-                    <div className="w-14 h-14 border-[1px] text-black border-gray-600  flex items-center justify-center rounded-lg">
+                    <div className="w-[40px] h-[40px] border-[1px] text-black border-gray-600  flex items-center justify-center rounded-lg">
                       <FaTiktok className="text-3xl" />
                     </div>
                   </Link>
                   <Link href="https://youtube.com" target="_blank">
-                    <div className="w-14 h-14 border-[1px] text-red-600 border-gray-600 flex items-center justify-center rounded-lg">
+                    <div className="w-[40px] h-[40px] border-[1px] text-red-600 border-gray-600 flex items-center justify-center rounded-lg">
                       <FaYoutube className="text-3xl" />
                     </div>
                   </Link>

@@ -67,10 +67,10 @@ export default function Home() {
             ref={txtRef}
             className={`${styles.about_text} flex flex-col justify-between max-w-[550] opacity-0`}
           >
-            <h2 className="md:mt-[0] mt-[30px] text-[3rem] md:text-[45px] font-extrabold text-green-700 pd-[30px] leading-[40px] md:leading-[55px]">
+            <h2 className="md:mt-[0] mt-[30px] text-[36px] md:text-[45px] font-extrabold text-green-700 pd-[30px] leading-[40px] md:leading-[55px]">
               Mighty Gurkha Training Center
             </h2>
-            <p className="mt-[30px] md:mt-0 text-[16px] md:text-[18px] text-gray-700 leading-[30px]">
+            <p className="mt-[30px] md:mt-0 text-[15px] md:text-[18px] text-gray-700 leading-[24px]">
               Mighty Gurkha Training Center (MGTC), proudly established in
               August 2022, stands as a beacon of excellence in British Army and
               Singapore Police Force preparation. Situated at Bagar-1, Pokhara,
