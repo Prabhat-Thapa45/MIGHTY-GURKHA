@@ -49,7 +49,7 @@ export default function Navbar() {
 
   interface NavLink {
     name: string;
-    href?: string;
+    href?: string; // Make href optional
     subLinks?: SubLink[];
   }
 
@@ -57,13 +57,15 @@ export default function Navbar() {
     { name: "Home", href: "/" },
     {
       name: "Our Programmes",
+      href: "/programmes", // Added href for the main programmes page
       subLinks: [
         { name: "British Gurkha Army", href: "/programmes/british-gurkha-army" },
-        { name: "Singapore Police Force", href: "/programmes/singapore-police" },
+        { name: "Singapore Police Force", href: "/programmes/singapore-police-force" },
       ],
     },
     {
       name: "Services",
+      href: "/services", // Added href for the main services page
       subLinks: [
         { name: "Hostel", href: "/services/#hostel" },
         { name: "Education", href: "/services/#education" },
@@ -111,8 +113,8 @@ export default function Navbar() {
       </div>
 
       {/* Main Navbar */}
-      <div className=""> 
-        <div className="flex items-center justify-between h-[90px]"> 
+      <div className="">
+        <div className="flex items-center justify-between h-[90px]">
           {/* Logo + Title */}
           <div className="flex items-center">
             <Link className="flex flex-row items-center justify-center pl-10" href="/">
@@ -142,18 +144,29 @@ export default function Navbar() {
                     onMouseEnter={() => link.subLinks && setOpenDropdown(link.name)}
                     className="relative group"
                   >
+                    {/* Always render a Link if href exists, otherwise render a div */}
                     {link.href ? (
                       <Link href={link.href} className="w-full text-[18px] font-[700] items-center justify-between ">
-                         <div className="relative">
-                          <span className={`${pathname === link.href ? "text-green-600" : "hover:text-green-600"}`}>
+                         <div className="relative flex items-center"> {/* Added flex and items-center here */}
+                          <span className={`${pathname === link.href || (link.subLinks && link.subLinks.some(sub => pathname.startsWith(sub.href))) ? "text-green-600" : "hover:text-green-600"}`}>
                             {link.name}
                           </span>
                           <span
-                            className={`absolute left-0 top-full mt-[30px] h-0.5 w-full bg-green-600 transform ${pathname === link.href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"} transition-transform duration-500 origin-left`}
+                            className={`absolute left-0 top-full mt-[30px] h-0.5 w-full bg-green-600 transform ${pathname === link.href || (link.subLinks && link.subLinks.some(sub => pathname.startsWith(sub.href))) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"} transition-transform duration-500 origin-left`}
                           />
+                           {link.subLinks && (
+                            <motion.div
+                              animate={{ rotate: openDropdown === link.name ? -180 : 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="ml-2"
+                            >
+                              <FaChevronDown />
+                            </motion.div>
+                          )}
                         </div>
                       </Link>
                     ) : (
+                      // Fallback for links without a direct href (though all current links have one now)
                       <div className="w-full h-[90px] py-1 text-[18px] font-[700] flex items-center justify-between cursor-pointer">
                         <div className="relative">
                           <span className={`${link.subLinks?.some(sub => pathname.startsWith(sub.href)) ? "text-green-600" : "hover:text-green-600"}`}>
@@ -243,7 +256,7 @@ export default function Navbar() {
                 }}
               >
                  <div className="py-[15px] flex flex-row items-center justify-between ">
-                  
+
                   <div className="flex items-center justify-start pl-5">
                     <Image src="/mgtc.png" alt="Mighty Gurkha Logo" width={48} height={48} priority/>
                     <span className="ml-[4px] text-[18px] font-bold text-black">Mighty<span className="text-green-600">Gurkha</span></span>
@@ -255,36 +268,40 @@ export default function Navbar() {
                     </motion.div>
                   </button>
                 </div>
-                
+
                 <div className="w-full h-[1px] bg-gray-300"></div>
 
                 {/* Mobile Links */}
                 {links.map((link, index) => (
                   <div key={link.name} className="w-full">
-                    {link.href ? (
+                    {/* Conditional rendering for links based on whether they have sub-links */}
+                    {link.subLinks ? (
+                      <button
+                        onClick={() => toggleDropdown(link.name)} // Only toggle dropdown
+                        className="w-full block text-left pl-[25px] py-3 text-[15px] font-[700] flex justify-between items-center"
+                      >
+                        <span className={`${link.subLinks?.some(sub => pathname.startsWith(sub.href)) ? "text-green-600" : "hover:text-green-600"}`}>
+                          {link.name}
+                        </span>
+                        <span className="pr-5 text-gray-600 transition-transform duration-300">
+                           {openDropdown === link.name ? "▲" : "▼"}
+                        </span>
+                      </button>
+                    ) : (
+                      // For links without sub-links, continue to use Link for navigation
                       <Link
-                        href={link.href}
-                        onClick={() => setIsOpen(false)}
-                        className="w-full block text-left pl-[25px] py-3 text-[15px] font-[700]"
+                        href={link.href!} // Use non-null assertion since we're in the 'no subLinks' case
+                        onClick={() => {
+                          setIsOpen(false);
+                          setOpenDropdown(null);
+                        }}
+                        className="w-full block text-left pl-[25px] py-3 text-[15px] font-[700] flex justify-between items-center"
                       >
                          <span className={`${pathname === link.href ? "text-green-600" : "hover:text-green-600"}`}>
                           {link.name}
                         </span>
+                        {/* No chevron for links without sub-links */}
                       </Link>
-                    ) : (
-                      <button
-                        onClick={() => toggleDropdown(link.name)}
-                        className="w-full block text-left pl-[25px] py-3 text-[15px] font-[700] flex justify-between items-center"
-                      >
-                        <span className={`${link.subLinks?.some(sub => pathname.startsWith(sub.href))? "text-green-600": "hover:text-green-600"}`}>
-                          {link.name}
-                        </span>
-                        {link.subLinks && (
-                          <span className="pr-5 text-gray-600 transition-transform duration-300">
-                             {openDropdown === link.name ? "▲" : "▼"}
-                          </span>
-                        )}
-                      </button>
                     )}
 
                     <AnimatePresence>

@@ -55,11 +55,11 @@ export default function AboutPage() {
       <Breadcrumbs />
 
       <section className="max-w-[1100px] mx-auto rounded-lg p-8 mt-10 bg-white">
-        <h1 className="mb-6 text-[30px] font-bold text-center text-green-700 leading-[35px]">
+        <h1 className="mb-6 text-[30px] md:text-[40px] font-bold text-center text-green-700 leading-[35px]">
           About Mighty Gurkha Training Center
         </h1>
 
-        <p className="text-[15px] text-gray-700 mb-8 indent-10">
+        <p className="text-[15px] md:text-[18px] text-gray-700 mb-8 indent-10 text-justify">
           Mighty Gurkha Training Center (MGTC), proudly established in August
           2022, stands as a beacon of excellence in British Army and Singapore
           Police Force preparation. Situated at Bagar-1, Pokhara, conveniently
@@ -69,7 +69,7 @@ export default function AboutPage() {
           and the highly selective Singapore Police Force.
         </p>
 
-        <p className="text-[15px] text-gray-700 mb-8 indent-10">
+        <p className="text-[15px] md:text-[18px] text-gray-700 mb-8 indent-10 text-justify">
           We understand the demanding selection processes of these elite forces.
           Therefore, our commitment extends beyond physical prowess,
           encompassing a rigorous curriculum focused on developing critical
@@ -92,7 +92,7 @@ export default function AboutPage() {
             <h2 className="mb-2 text-2xl font-semibold text-green-700">
               Our Mission
             </h2>
-            <p className="text-gray-700 text-[15px]">
+            <p className="text-gray-700 text-[15px] md:text-[18px] text-justify">
               To inspire, train, and equip aspiring candidates with the skills,
               discipline, and confidence required for selection, fostering a
               spirit of excellence and resilience. Beyond recruitment, we are
@@ -112,7 +112,7 @@ export default function AboutPage() {
             <h2 className="mb-2 text-2xl font-semibold text-green-700">
               Our Vision
             </h2>
-            <p className="text-gray-700 text-[15px]">
+            <p className="text-gray-700 text-[15px]  md:text-[18px] text-justify">
               To be the leading training center recognized for producing
               outstanding recruits who embody integrity, leadership, and
               dedication, making a positive impact in their communities and
@@ -166,11 +166,11 @@ export default function AboutPage() {
     ${founderVisible ? "opacity-100 translate-y-2" : "opacity-0"}
   `}
             >
-              <h3 className="pt-5 md:pt-0 text-[30px] md:text-[3rem] font-extrabold text-green-700 leading-[35px] md:leading-[45px] self-start">
+              <h3 className="pt-5 md:pt-0 text-[30px] md:text-[40px] font-extrabold text-green-700 leading-[35px] md:leading-[45px] self-start">
                 Message from the Founder
               </h3>
 
-              <p className="text-gray-700 pt-6 md:pt-0 text-left text-[15px] mb-4 indent-10">
+              <p className="text-gray-700 pt-6 md:pt-0 text-[15px] md:text-[18px] mb-4 indent-10 text-justify">
                 ”At Mighty Gurkha Training Center,” our mission is to nurture
                 not just strong candidates, but strong individuals. Every
                 journey here is a testament to dedication, discipline, and the
@@ -181,7 +181,7 @@ export default function AboutPage() {
                 for greatness, both in service and in life, knowing they will
                 carry the Gurkha spirit of honor and resilience.
               </p>
-              <span className="font-semibold text-green-700 text-[16px] self-end">
+              <span className="font-semibold text-green-700 text-[18px] self-end">
                 - Krishna Tamang, Founder
               </span>
             </div>

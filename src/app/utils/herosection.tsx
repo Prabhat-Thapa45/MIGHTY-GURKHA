@@ -122,7 +122,7 @@ export default function HeroSection() {
         {/* Subheading */}
         <motion.p
           transition={{ ease: "easeOut" }}
-          className="mt-4 text-[1.3rem] font-bold shadow"
+          className="mt-4 text-[1.3rem] font-bold shadow text-green-300"
         >
           Prepare for success with rigorous training and top-tier facilities.
         </motion.p>
@@ -165,7 +165,7 @@ export default function HeroSection() {
           className="mt-4"
         >
           {/* Subheading */}
-          <motion.p className="text-[1.7rem] font-bold shadow text-green-600">
+          <motion.p className="text-[1.7rem] font-bold shadow text-green-300">
             Prepare for success with our tailored system for your tough journey.
           </motion.p>
         </motion.div>

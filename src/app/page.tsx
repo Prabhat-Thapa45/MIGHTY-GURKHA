@@ -45,7 +45,7 @@ export default function Home() {
           {/* Left: Image */}
           <div
             ref={imgRef}
-            className="flex gap-4 justify-center relative h-[500px] md:h-[600px] sm:h-[510px] w-full max-w-[550px] mt-4 group mx-auto opacity-0"
+            className="flex gap-4 justify-center relative h-[500px] md:h-[550px] sm:h-[510px] w-full max-w-[550px] mt-4 group mx-auto opacity-0"
           >
             <div className="md:h-full w-[10px] bg-green-600 hidden sm:block"></div>
             <div className="overflow-hidden md:h-full w-full sm:max-w-[490px] relative">
@@ -65,12 +65,12 @@ export default function Home() {
           {/* Right: Text */}
           <div
             ref={txtRef}
-            className={`${styles.about_text} flex flex-col justify-between max-w-[550] opacity-0`}
+            className={`${styles.about_text} flex flex-col md:gap-y-[40px] max-w-[550] opacity-0`}
           >
-            <h2 className="md:mt-[0] mt-[30px] text-[36px] md:text-[45px] font-extrabold text-green-700 pd-[30px] leading-[40px] md:leading-[55px]">
+            <h2 className="md:mt-[0] mt-[30px] text-[36px] md:text-[40px] font-extrabold text-green-700 pd-[30px] leading-[40px] md:leading-[55px]">
               Mighty Gurkha Training Center
             </h2>
-            <p className="mt-[30px] md:mt-0 text-[15px] md:text-[18px] text-gray-700 leading-[24px]">
+            <p className="mt-[30px] md:mt-0 text-[15px] md:text-[18px] text-gray-700 leading-[24px] text-justify">
               Mighty Gurkha Training Center (MGTC), proudly established in
               August 2022, stands as a beacon of excellence in British Army and
               Singapore Police Force preparation. Situated at Bagar-1, Pokhara,

@@ -47,7 +47,7 @@ const stories: Story[] = [
     rank: "Singapore Police",
     photo: "/Ravi.jpg",
     quote:
-      "MGTC nurtured me which made me better everyday. I am fortunate to be where I am now but it was their guidance that made it possible.",
+      "MGTC nurtured me which made me better everyday. I am fortunate to be where I am now.",
   },
 ];
 

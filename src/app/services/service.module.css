@@ -1,12 +1,19 @@
-.hostel{
+.service{
+    flex-direction: row;
+}
+.serviceRev{
     flex-direction: row;
 }
 @media (max-width: 900px){
-    .hostel{
+    .serviceRev{
+        flex-direction: column-reverse;
+        width: 90%;
+    }
+    .service{
         flex-direction: column;
         width: 90%;
     }
-    .hostelText{
+    .descText{
         margin-top: 20px;
         margin-left: 0;
     }
