@@ -57,7 +57,7 @@ export default function SuccessStories() {
   return (
     <section className="py-16 bg-slate-50 mt-[70px]">
       <div className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="text-[36px] md:text-[50px] font-extrabold text-green-700 tracking-[-1px] leading-[-10px]">
+        <h2 className="md:mt-[0] mt-[30px] text-[36px] md:text-[40px] font-extrabold text-green-700 pd-[30px] leading-[40px] md:leading-[55px]">
           Success Stories
         </h2>
         <p className="text-gray-600 mb-12 text-[15px] md:text-[18px] leading-[24px]">

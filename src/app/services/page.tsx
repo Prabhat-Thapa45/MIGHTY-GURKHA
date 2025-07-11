@@ -49,7 +49,7 @@ const ServicesPage: React.FC = () => {
   return (
     <div>
       {/* Service Sections */}
-      <div className="flex flex-col bg-white text-center">
+      <div className="flex flex-col bg-slate-100 text-center">
         <Breadcrumbs />
         {services.map((service) => (
           <section

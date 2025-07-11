@@ -53,7 +53,6 @@ export default function AboutPage() {
   return (
     <main className="flex flex-col bg-slate-100">
       <Breadcrumbs />
-
       <section className="max-w-[1100px] mx-auto rounded-lg p-8 mt-10 bg-white">
         <h1 className="mb-6 text-[30px] md:text-[40px] font-bold text-center text-green-700 leading-[35px]">
           About Mighty Gurkha Training Center

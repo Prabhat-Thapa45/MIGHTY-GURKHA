@@ -40,12 +40,12 @@ export default function Home() {
       <HeroSection />
 
       {/* About Section */}
-      <div className="mt-[70px] max-w-[1200px] bg-gray-100 mx-auto px-5">
+      <div className="my-[70px] max-w-[1200px] bg-gray-100 mx-auto px-5">
         <div className={`flex flex-row ${styles.aboutus}`}>
           {/* Left: Image */}
           <div
             ref={imgRef}
-            className="flex gap-4 justify-center relative h-[500px] md:h-[550px] sm:h-[510px] w-full max-w-[550px] mt-4 group mx-auto opacity-0"
+            className="flex gap-4 justify-center relative h-[500px] md:h-[550px] sm:h-[510px] w-full max-w-[550px] mt-[16px] group mx-auto opacity-0"
           >
             <div className="md:h-full w-[10px] bg-green-600 hidden sm:block"></div>
             <div className="overflow-hidden md:h-full w-full sm:max-w-[490px] relative">
@@ -93,11 +93,16 @@ export default function Home() {
       </div>
       <SuccessStories />
       {/* CTA Section */}
-      <div className="py-10 text-center text-white bg-green-700">
-        <h2 className="text-3xl font-bold">Start Your Journey Today</h2>
-        <button className="px-6 py-2 mt-6 text-lg text-green-700 bg-white rounded-lg hover:bg-gray-200">
-          Apply Now
-        </button>
+      <div className="py-[30px] text-center text-white bg-green-700">
+        <h2 className="text-[30px] md:text-[40px] font-extrabold leading-[40px] md:leading-[55px] pb-[15px]">
+          Start Your Journey Today
+        </h2>
+        {/* Using Next.js Link component */}
+        <Link href="/contact-us" legacyBehavior>
+          <a className="px-6 md:py-2 py-[8px] md:mt-6 mt-4 text-[16px] md:text-[18px] font-bold text-green-700 bg-white rounded-sm hover:bg-gray-200">
+            Apply Now
+          </a>
+        </Link>
       </div>
     </div>
   );
