@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { FaUserShield} from "react-icons/fa";
 import Breadcrumbs from "../utils/bg_with_urls";
 import Image from "next/image";
 

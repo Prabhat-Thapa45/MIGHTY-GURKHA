@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./navbar/navbar";
 import Footer from "./footer/footer";
 import WhatsappButton from "./utils/whatsapp";
+import SessionProviderWrapper from "./utils/SessionProviderWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,12 +31,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        {children}
-        <div className="fixed bottom-4 right-4 z-50 shadow-lg">
-          <WhatsappButton phoneNumber="919663759007" />
-        </div>
-        <Footer />
+        <SessionProviderWrapper>
+          <Navbar />
+          {children}
+          <div className="fixed bottom-4 right-4 z-50 shadow-lg">
+            <WhatsappButton phoneNumber="919663759007" />
+          </div>
+          <Footer />
+        </SessionProviderWrapper>
       </body>
     </html>
   );

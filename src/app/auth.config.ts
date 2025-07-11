@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { getUserByEmail } from "./db";
 import CredentialsProvider from "next-auth/providers/credentials";
 

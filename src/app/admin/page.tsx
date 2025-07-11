@@ -4,8 +4,19 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
+type AdminUser = {
+  name?: string | null;
+  email?: string | null;
+  image?: string | null;
+  isAdmin?: boolean;
+};
+
+type AdminSession = {
+  user?: AdminUser;
+};
+
 export default function AdminDashboard() {
-  const { data: session, status } = useSession();
+  const { data: session, status } = useSession() as { data: AdminSession | null; status: string };
   const router = useRouter();
 
   useEffect(() => {

@@ -15,7 +15,7 @@ const images = ["/group.jpg", "/training.jpg", "/hostel.jpg"];
 export default function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(-1);
   // textVisible state is no longer needed as Framer Motion will handle text animation
-  const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
+  const timerRef = React.useRef<NodeJS.Timeout | null>(null);
 
   // Define the variants for the text elements
   const textVariants = {
@@ -39,13 +39,12 @@ export default function HeroSection() {
     };
 
     const intervalId = startAutoSlide();
-    setTimer(intervalId);
+    timerRef.current = intervalId;
 
     // Cleanup function: Clear any pending timeouts and intervals on component unmount
     return () => {
       clearTimeout(initialLoadTimeout);
-      clearInterval(intervalId);
-      if (timer) clearInterval(timer);
+      if (timerRef.current) clearInterval(timerRef.current);
     };
   }, []); // Empty dependency array means this effect runs once on mount
 
@@ -55,13 +54,12 @@ export default function HeroSection() {
     setCurrentIndex(index); // Change image, which will re-trigger text animation via `key`
 
     // Clear previous auto-slide timer and start a new one to reset the cycle
-    if (timer) clearInterval(timer);
+    if (timerRef.current) clearInterval(timerRef.current);
     const newInterval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 8000);
-    setTimer(newInterval);
+    timerRef.current = newInterval;
   };
-
   return (
     <div className="relative w-full" style={{ height: `100vh` }}>
       {/* Image Slideshow */}
