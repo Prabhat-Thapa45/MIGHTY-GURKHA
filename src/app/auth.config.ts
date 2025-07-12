@@ -22,12 +22,8 @@ export const authConfig = {
           credentials.password,
           user.password
         );
-        console.log("Credentials:", credentials);
-        console.log("User from DB:", user);
-        console.log("Password match:", isValid);
-        console.log("Is admin:", user?.isAdmin);
 
-        if (isValid && user.isAdmin) {
+        if (isValid && user.isadmin) {
           return user;
         }
 
