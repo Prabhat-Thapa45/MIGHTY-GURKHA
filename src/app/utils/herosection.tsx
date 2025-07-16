@@ -1,8 +1,8 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { DM_Sans } from "next/font/google";
-import { motion } from "framer-motion"; // Import motion
+import { motion } from "framer-motion";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -14,52 +14,39 @@ const images = ["/group.jpg", "/training.jpg", "/hostel.jpg"];
 
 export default function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(-1);
-  // textVisible state is no longer needed as Framer Motion will handle text animation
-  const timerRef = React.useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Define the variants for the text elements
   const textVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
   };
 
   useEffect(() => {
-    // Initial display for the first image and text
-    const initialLoadTimeout = setTimeout(() => {
-      setCurrentIndex(0);
-      // textVisible is no longer used here, Framer Motion takes over
-    }, 0);
+    const initialTimeout = setTimeout(() => setCurrentIndex(0), 0);
 
-    // Function to start the automatic slideshow timer
-    const startAutoSlide = () => {
-      return setInterval(() => {
-        // We'll re-trigger Framer Motion animation by changing `key` on the text container
+    const startAutoSlide = () =>
+      setInterval(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-      }, 8000); // Image changes every 8 seconds
-    };
+      }, 8000);
 
-    const intervalId = startAutoSlide();
-    timerRef.current = intervalId;
+    const interval = startAutoSlide();
+    timerRef.current = interval;
 
-    // Cleanup function: Clear any pending timeouts and intervals on component unmount
     return () => {
-      clearTimeout(initialLoadTimeout);
+      clearTimeout(initialTimeout);
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, []); // Empty dependency array means this effect runs once on mount
+  }, []);
 
   const handleImageChange = (index: number) => {
-    if (index === currentIndex) return; // Prevent unnecessary re-renders
-
-    setCurrentIndex(index); // Change image, which will re-trigger text animation via `key`
-
-    // Clear previous auto-slide timer and start a new one to reset the cycle
+    if (index === currentIndex) return;
+    setCurrentIndex(index);
     if (timerRef.current) clearInterval(timerRef.current);
-    const newInterval = setInterval(() => {
+    timerRef.current = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 8000);
-    timerRef.current = newInterval;
   };
+
   return (
     <div className="relative w-full" style={{ height: `100vh` }}>
       {/* Image Slideshow */}
@@ -72,102 +59,89 @@ export default function HeroSection() {
             layout="fill"
             objectFit="cover"
             className={`absolute inset-0 transition-transform duration-[9s] ${
-              index === currentIndex
-                ? "scale-109 visible"
-                : "scale-100 invisible"
+              index === currentIndex ? "scale-109 visible" : "scale-100 invisible"
             } brightness-90`}
           />
         ))}
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/50 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-black/50 pointer-events-none" />
       </div>
 
       {/* Navigation Buttons */}
       <div className="absolute top-1/2 left-[8%] flex flex-col gap-5 invisible md:visible -translate-y-1/2">
-        {" "}
-        {/* Added -translate-y-1/2 for perfect vertical centering */}
         {images.map((_, index) => (
           <button
-            key={index}
+            key={`nav-${index}`}
             onClick={() => handleImageChange(index)}
             className={`w-7 h-7 rounded-full border-2 transition-all duration-700 ${
-              index === currentIndex
-                ? "bg-white border-white "
-                : "border-white bg-transparent "
+              index === currentIndex ? "bg-white border-white" : "border-white bg-transparent"
             }`}
           />
         ))}
       </div>
 
-      {/* Hero Text Section - Now powered by Framer Motion */}
-      <motion.div
-        key={currentIndex} // Remount on image change
-        initial={{ opacity: 1, y: 0 }} // Start fully visible and in place
-        animate={{ opacity: 0, y: 50 }} // Move down and fade out at the same time
-        transition={{
-          duration: 0.3,
-        }}
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70%] text-white shadow-lg text-left"
-      >
-        {/* Heading */}
-        <motion.span
-          transition={{ ease: "easeOut" }}
-          className={`block ${dmSans.className} lg:text-[60px] text-[30px] md:text-[1.75rem] font-[900] tracking-[-.02rem] leading-[1.2]`}
-        >
-          MIGHTY GURKHA TRAINING CENTER
-        </motion.span>
+      {/* Hero Text Section */}
+      {currentIndex >= 0 && (
+        <>
+          <motion.div
+            key={`fade-${currentIndex}`}
+            initial={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 0, y: 50 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70%] text-white shadow-lg text-left"
+          >
+            <motion.span
+              transition={{ ease: "easeOut" }}
+              className={`block ${dmSans.className} lg:text-[60px] text-[30px] md:text-[1.75rem] font-[900] tracking-[-.02rem] leading-[1.2]`}
+            >
+              MIGHTY GURKHA TRAINING CENTER
+            </motion.span>
+            <motion.p
+              transition={{ ease: "easeOut" }}
+              className="mt-4 text-[1.3rem] font-bold shadow text-green-300"
+            >
+              Prepare for success with rigorous training and top-tier facilities.
+            </motion.p>
+          </motion.div>
 
-        {/* Subheading */}
-        <motion.p
-          transition={{ ease: "easeOut" }}
-          className="mt-4 text-[1.3rem] font-bold shadow text-green-300"
-        >
-          Prepare for success with rigorous training and top-tier facilities.
-        </motion.p>
-      </motion.div>
+          <motion.div
+            key={`animated-${currentIndex}`}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.6,
+                  delayChildren: 1.3,
+                },
+              },
+            }}
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70%] text-white shadow-lg text-left"
+          >
+            <motion.span
+              variants={textVariants}
+              transition={{ duration: 1, ease: "easeInOut" }}
+              className={`flex flex-wrap ${dmSans.className} lg:text-[50px] text-[30px] md:text-[1.75rem] font-[900] tracking-[-.02rem] leading-[1.2] gap-2`}
+            >
+              <span>MIGHTY</span>
+              <span>GURKHA</span>
+              <span>TRAINING</span>
+              <span>CENTER</span>
+            </motion.span>
 
-      {/* now text will appear */}
-
-      <motion.div
-        key={currentIndex} // Remounts on image change
-        initial="hidden" // Parent initial state
-        animate="visible" // Parent animate state
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: {
-              staggerChildren: 0.6, // Stagger the children
-              delayChildren: 1.3, // Delay before children start animating
-            },
-          },
-        }}
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[70%] text-white shadow-lg text-left"
-      >
-        {/* Heading */}
-        <motion.span
-          variants={textVariants}
-          transition={{ duration: 1, ease: "easeInOut" }}
-          className={`flex flex-wrap ${dmSans.className} lg:text-[50px] text-[30px] md:text-[1.75rem] font-[900] tracking-[-.02rem] leading-[1.2] gap-2`}
-        >
-          <span>MIGHTY</span>
-          <span>GURKHA</span>
-          <span>TRAINING</span>
-          <span>CENTER</span>
-        </motion.span>
-
-        {/* Combined Subheading and Button as one child */}
-        <motion.div
-          variants={textVariants} // Same variants for the grouped block
-          transition={{ duration: 0.9, ease: "easeOut" }}
-          className="mt-4"
-        >
-          {/* Subheading */}
-          <motion.p className="text-[1.7rem] font-bold shadow text-green-300">
-            Prepare for success with our tailored system for your tough journey.
-          </motion.p>
-        </motion.div>
-      </motion.div>
+            <motion.div
+              variants={textVariants}
+              transition={{ duration: 0.9, ease: "easeOut" }}
+              className="mt-4"
+            >
+              <motion.p className="text-[1.7rem] font-bold shadow text-green-300">
+                Prepare for success with our tailored system for your tough journey.
+              </motion.p>
+            </motion.div>
+          </motion.div>
+        </>
+      )}
     </div>
   );
 }

@@ -55,70 +55,91 @@ export default function AboutPage() {
       <Breadcrumbs />
       <section className="max-w-[1100px] mx-auto rounded-lg p-8 mt-10 bg-white">
         <h1 className="mb-6 text-[30px] md:text-[40px] font-bold text-center text-green-700 leading-[35px]">
-          About Mighty Gurkha Training Center
-        </h1>
+  About Mighty Gurkha Training Centre
+</h1>
 
-        <p className="text-[15px] md:text-[18px] text-gray-700 mb-8 indent-10 text-justify">
-          Mighty Gurkha Training Center (MGTC), proudly established in August
-          2022, stands as a beacon of excellence in British Army and Singapore
-          Police Force preparation. Situated at Bagar-1, Pokhara, conveniently
-          located in front of Machhapuchhre Bank. We offer a holistic and
-          intensive training regimen. We are singularly dedicated to preparing
-          young men for successful recruitment into the esteemed British Army
-          and the highly selective Singapore Police Force.
-        </p>
+<p className="text-[15px] md:text-[18px] text-gray-700 mb-6 indent-10 text-justify">
+  Mighty Gurkha Training Centre in Pokhara focuses on preparing individuals
+  for Gurkha service, specifically for the British Army and Singapore Police
+  Force.
+</p>
 
-        <p className="text-[15px] md:text-[18px] text-gray-700 mb-8 indent-10 text-justify">
-          We understand the demanding selection processes of these elite forces.
-          Therefore, our commitment extends beyond physical prowess,
-          encompassing a rigorous curriculum focused on developing critical
-          thinking, mental resilience, and impeccable character. From bespoke
-          physical drills to comprehensive interview preparation and fostering a
-          strong sense of camaraderie, MGTC provides the tools and guidance
-          necessary for our trainees not just to succeed in recruitment, but to
-          excel in their future careers, serving with unwavering honor and
-          distinction.
-        </p>
+<p className="text-[15px] md:text-[18px] text-gray-700 mb-8 indent-10 text-justify">
+  We offer physical and educational training, interview preparation, and
+  emphasize quality education delivered efficiently. The center highlights a
+  high success ratio and provides a supportive environment for aspiring
+  recruits.
+</p>
 
-        <div className="grid gap-8 md:grid-cols-2">
-          {/* Our Mission */}
-          <div
-            ref={missionRef}
-            className={` ${
-              missionVisible ? styles.animatefadeinright : ""
-            } p-6 rounded-lg bg-slate-100`}
-          >
-            <h2 className="mb-2 text-2xl font-semibold text-green-700">
-              Our Mission
-            </h2>
-            <p className="text-gray-700 text-[15px] md:text-[18px] text-justify">
-              To inspire, train, and equip aspiring candidates with the skills,
-              discipline, and confidence required for selection, fostering a
-              spirit of excellence and resilience. Beyond recruitment, we are
-              committed to developing well-rounded individuals, empowering them
-              with the character and tenacity to navigate life’s challenges and
-              achieve success in all their future endeavors.
-            </p>
-          </div>
+<h2 className="mb-4 text-2xl font-semibold text-green-700">Key Aspects</h2>
+<div className="grid gap-8 md:grid-cols-2">
+  <div className="p-6 bg-slate-100 rounded-lg shadow">
+    <h3 className="mb-2 text-xl font-semibold text-green-700">
+      Focus on Gurkha Recruitment
+    </h3>
+    <p className="text-gray-700 text-[15px] md:text-[18px] text-justify">
+      The primary goal is to prepare candidates for Gurkha selection processes
+      for various forces.
+    </p>
+  </div>
 
-          {/* Our Vision */}
-          <div
-            ref={visionRef}
-            className={`${
-              visionVisible ? styles.animatefadeinleft : ""
-            } p-6 rounded-lg bg-slate-100`}
-          >
-            <h2 className="mb-2 text-2xl font-semibold text-green-700">
-              Our Vision
-            </h2>
-            <p className="text-gray-700 text-[15px]  md:text-[18px] text-justify">
-              To be the leading training center recognized for producing
-              outstanding recruits who embody integrity, leadership, and
-              dedication, making a positive impact in their communities and
-              beyond.
-            </p>
-          </div>
-        </div>
+  <div className="p-6 bg-slate-100 rounded-lg shadow">
+    <h3 className="mb-2 text-xl font-semibold text-green-700">
+      Physical & Educational Training
+    </h3>
+    <p className="text-gray-700 text-[15px] md:text-[18px] text-justify">
+      The center provides both physical conditioning and academic instruction
+      to enhance candidates suitability for Gurkha service.
+    </p>
+  </div>
+
+  <div className="p-6 bg-slate-100 rounded-lg shadow">
+    <h3 className="mb-2 text-xl font-semibold text-green-700">
+      Quality Education
+    </h3>
+    <p className="text-gray-700 text-[15px] md:text-[18px] text-justify">
+      Emphasizing effective training in a condensed format for shortcut success,
+      as featured on our Facebook page.
+    </p>
+  </div>
+
+  <div className="p-6 bg-slate-100 rounded-lg shadow">
+    <h3 className="mb-2 text-xl font-semibold text-green-700">
+      Supportive Environment
+    </h3>
+    <p className="text-gray-700 text-[15px] md:text-[18px] text-justify">
+      A positive and motivating atmosphere that fosters discipline, resilience,
+      and camaraderie.
+    </p>
+  </div>
+
+  <div className="p-6 bg-slate-100 rounded-lg shadow">
+    <h3 className="mb-2 text-xl font-semibold text-green-700">
+      Success Stories
+    </h3>
+    <p className="text-gray-700 text-[15px] md:text-[18px] text-justify">
+      Highlighting achievements like Kebindra Chhantyal’s first-attempt selection
+      into the Gurkha Contingent Singapore Police Force (GCSPF).
+    </p>
+  </div>
+
+  <div className="p-6 bg-slate-100 rounded-lg shadow">
+    <h3 className="mb-2 text-xl font-semibold text-green-700">
+      Location & Online Presence
+    </h3>
+    <p className="text-gray-700 text-[15px] md:text-[18px] text-justify">
+      Situated in Bagar, Pokhara, with an active Facebook & Instagram presence
+      sharing updates, success stories, and motivation.
+    </p>
+  </div>
+</div>
+
+<p className="text-[15px] md:text-[18px] text-gray-700 mt-8 indent-10 text-justify">
+  Overall, we are a dedicated training center 
+  focused on providing absolute best training and support for individuals aspiring
+  to join the Gurkhas.
+</p>
+
 
         {/* Message from the Founder */}
         <div tabIndex={0} className="flex items-center justify-center mt-12 ">

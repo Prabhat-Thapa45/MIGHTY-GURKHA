@@ -98,10 +98,10 @@ export default function Home() {
           Start Your Journey Today
         </h2>
         {/* Using Next.js Link component */}
-        <Link href="/contact-us" legacyBehavior>
-          <a className="px-6 md:py-2 py-[8px] md:mt-6 mt-4 text-[16px] md:text-[18px] font-bold text-green-700 bg-white rounded-sm hover:bg-gray-200">
+        <Link href="/contact-us">
+          <span className="inline-block px-6 md:py-2 py-[8px] md:mt-6 mt-4 text-[16px] md:text-[18px] font-bold text-green-700 bg-white rounded-sm hover:bg-gray-200">
             Apply Now
-          </a>
+          </span>
         </Link>
       </div>
     </div>
