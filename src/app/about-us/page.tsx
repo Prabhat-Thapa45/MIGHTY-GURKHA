@@ -10,8 +10,7 @@ export default function AboutPage() {
   const visionRef = useRef<HTMLDivElement>(null);
 
   const [founderVisible, setFounderVisible] = useState(false);
-  const [missionVisible, setMissionVisible] = useState(false);
-  const [visionVisible, setVisionVisible] = useState(false);
+
 
   useEffect(() => {
     const obs = new IntersectionObserver(
