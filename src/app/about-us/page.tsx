@@ -24,11 +24,9 @@ export default function AboutPage() {
               o.unobserve(entry.target);
               break;
             case missionRef.current:
-              setMissionVisible(true);
               o.unobserve(entry.target);
               break;
             case visionRef.current:
-              setVisionVisible(true);
               o.unobserve(entry.target);
               break;
           }
